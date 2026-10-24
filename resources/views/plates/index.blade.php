@@ -94,13 +94,13 @@
                             <td class="px-4 py-3.5 text-slate-600">
                                 {{ $rec->storage_bin_ref ?: 'Unassigned' }}
                             </td>
-                            <td class="px-4 py-3.5 text-right space-x-2">
-                                <a href="{{ route('plates.show', $rec) }}" class="text-xs font-bold text-slate-700 hover:text-blue-600">
+                            <td class="px-4 py-3.5 text-right whitespace-nowrap space-x-2">
+                                <a href="{{ route('plates.show', $rec) }}" class="inline-flex items-center text-xs font-bold text-slate-700 hover:text-blue-600 whitespace-nowrap">
                                     Manage
                                 </a>
                                 @if($rec->status === 'ready_for_pickup')
                                     <a href="{{ route('releases.create', ['tracking_reference' => $rec->motorcycle->tracking_reference]) }}"
-                                       class="px-2 py-1 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold">
+                                       class="inline-flex items-center px-2 py-1 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold whitespace-nowrap">
                                         Claim
                                     </a>
                                 @endif

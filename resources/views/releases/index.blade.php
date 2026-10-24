@@ -49,15 +49,15 @@
                         <th class="px-4 py-3.5">Claimant & Contact</th>
                         <th class="px-4 py-3.5">ID Verification</th>
                         <th class="px-4 py-3.5">Claimed Items</th>
-                        <th class="px-4 py-3.5">Released At</th>
-                        <th class="px-4 py-3.5">Staff In-Charge</th>
-                        <th class="px-4 py-3.5 text-right">Actions</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Released At</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Staff In-Charge</th>
+                        <th class="px-4 py-3.5 text-right whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     @forelse($transactions as $tx)
                         <tr class="hover:bg-slate-50 transition">
-                            <td class="px-4 py-3.5 font-mono font-bold text-slate-900">
+                            <td class="px-4 py-3.5 font-mono font-bold text-slate-900 whitespace-nowrap">
                                 <a href="{{ route('releases.show', $tx) }}" class="hover:text-emerald-600">
                                     {{ $tx->transaction_code }}
                                 </a>
@@ -66,29 +66,29 @@
                                 <strong class="text-slate-800">{{ $tx->claimant_name }}</strong>
                                 <span class="block text-[10px] text-slate-400 capitalize">Role: {{ str_replace('_', ' ', $tx->claimant_type) }} &bull; {{ $tx->claimant_contact }}</span>
                             </td>
-                            <td class="px-4 py-3.5 text-slate-600">
+                            <td class="px-4 py-3.5 whitespace-nowrap text-slate-600">
                                 <div>{{ $tx->id_type_presented }}</div>
                                 <span class="font-mono text-[10px] text-slate-400">{{ $tx->id_number_masked }}</span>
                             </td>
-                            <td class="px-4 py-3.5">
+                            <td class="px-4 py-3.5 whitespace-nowrap">
                                 <div class="space-y-1">
                                     @foreach($tx->releaseItems as $item)
-                                        <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200 whitespace-nowrap">
                                             {{ $item->item_type_label }}
                                         </span>
                                     @endforeach
                                 </div>
                             </td>
-                            <td class="px-4 py-3.5 text-slate-600">
+                            <td class="px-4 py-3.5 whitespace-nowrap text-slate-600">
                                 {{ $tx->released_at->format('M d, Y h:i A') }}
                             </td>
-                            <td class="px-4 py-3.5 text-slate-500">
+                            <td class="px-4 py-3.5 whitespace-nowrap text-slate-500">
                                 {{ $tx->processedByUser->name }}
                             </td>
-                            <td class="px-4 py-3.5 text-right space-x-2">
-                                <a href="{{ route('releases.show', $tx) }}" class="text-xs font-bold text-slate-700 hover:text-emerald-600">View</a>
-                                <a href="{{ route('releases.print_receipt', $tx) }}" target="_blank" class="text-xs font-semibold text-slate-500 hover:text-slate-900" title="Print Receipt">
-                                    <i data-lucide="printer" class="w-3.5 h-3.5 inline"></i>
+                            <td class="px-4 py-3.5 text-right whitespace-nowrap space-x-2">
+                                <a href="{{ route('releases.show', $tx) }}" class="inline-flex items-center text-xs font-bold text-slate-700 hover:text-emerald-600 whitespace-nowrap">View</a>
+                                <a href="{{ route('releases.print_receipt', $tx) }}" target="_blank" class="inline-flex items-center text-xs font-semibold text-slate-500 hover:text-slate-900 whitespace-nowrap" title="Print Receipt">
+                                    <i data-lucide="printer" class="w-3.5 h-3.5 inline mr-1"></i> Receipt
                                 </a>
                             </td>
                         </tr>

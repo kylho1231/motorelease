@@ -175,42 +175,42 @@
                 <table class="w-full text-left text-xs">
                     <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase font-semibold">
                         <tr>
-                            <th class="px-4 py-3">Tracking Ref</th>
-                            <th class="px-4 py-3">Item Type</th>
+                            <th class="px-4 py-3 whitespace-nowrap">Tracking Ref</th>
+                            <th class="px-4 py-3 whitespace-nowrap">Item Type</th>
                             <th class="px-4 py-3">Customer & Contact</th>
-                            <th class="px-4 py-3">Ready Since</th>
-                            <th class="px-4 py-3">Days Unclaimed</th>
-                            <th class="px-4 py-3 text-right">Action</th>
+                            <th class="px-4 py-3 whitespace-nowrap">Ready Since</th>
+                            <th class="px-4 py-3 whitespace-nowrap">Days Unclaimed</th>
+                            <th class="px-4 py-3 text-right whitespace-nowrap">Action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
                         @foreach($unclaimedAgingOrcr as $rec)
                             <tr class="hover:bg-slate-50">
-                                <td class="px-4 py-3 font-mono font-bold text-slate-900">{{ $rec->motorcycle->tracking_reference }}</td>
-                                <td class="px-4 py-3 font-semibold text-slate-800">OR/CR Package</td>
+                                <td class="px-4 py-3 font-mono font-bold text-slate-900 whitespace-nowrap">{{ $rec->motorcycle->tracking_reference }}</td>
+                                <td class="px-4 py-3 font-semibold text-slate-800 whitespace-nowrap">OR/CR Package</td>
                                 <td class="px-4 py-3">
                                     {{ $rec->motorcycle->customer?->full_name }}
                                     <span class="block text-[10px] font-mono text-slate-400">{{ $rec->motorcycle->customer?->mobile_number }}</span>
                                 </td>
-                                <td class="px-4 py-3 text-slate-600">{{ $rec->verified_at?->format('M d, Y') }}</td>
-                                <td class="px-4 py-3 font-bold text-amber-700">{{ $rec->verified_at ? now()->diffInDays($rec->verified_at) : 0 }} days</td>
-                                <td class="px-4 py-3 text-right">
-                                    <a href="{{ route('motorcycles.show', $rec->motorcycle) }}" class="text-red-600 font-bold hover:underline">View & Remind</a>
+                                <td class="px-4 py-3 text-slate-600 whitespace-nowrap">{{ $rec->verified_at?->format('M d, Y') }}</td>
+                                <td class="px-4 py-3 font-bold text-amber-700 whitespace-nowrap">{{ $rec->verified_at ? now()->diffInDays($rec->verified_at) : 0 }} days</td>
+                                <td class="px-4 py-3 text-right whitespace-nowrap">
+                                    <a href="{{ route('motorcycles.show', $rec->motorcycle) }}" class="inline-flex items-center text-red-600 font-bold hover:underline whitespace-nowrap">View & Remind</a>
                                 </td>
                             </tr>
                         @endforeach
                         @foreach($unclaimedAgingPlates as $rec)
                             <tr class="hover:bg-slate-50">
-                                <td class="px-4 py-3 font-mono font-bold text-slate-900">{{ $rec->motorcycle->tracking_reference }}</td>
-                                <td class="px-4 py-3 font-semibold text-slate-800">License Plate ({{ $rec->plate_number ?: 'Assigned' }})</td>
+                                <td class="px-4 py-3 font-mono font-bold text-slate-900 whitespace-nowrap">{{ $rec->motorcycle->tracking_reference }}</td>
+                                <td class="px-4 py-3 font-semibold text-slate-800 whitespace-nowrap">License Plate ({{ $rec->plate_number ?: 'Assigned' }})</td>
                                 <td class="px-4 py-3">
                                     {{ $rec->motorcycle->customer?->full_name }}
                                     <span class="block text-[10px] font-mono text-slate-400">{{ $rec->motorcycle->customer?->mobile_number }}</span>
                                 </td>
-                                <td class="px-4 py-3 text-slate-600">{{ $rec->verified_at?->format('M d, Y') }}</td>
-                                <td class="px-4 py-3 font-bold text-amber-700">{{ $rec->verified_at ? now()->diffInDays($rec->verified_at) : 0 }} days</td>
-                                <td class="px-4 py-3 text-right">
-                                    <a href="{{ route('motorcycles.show', $rec->motorcycle) }}" class="text-blue-600 font-bold hover:underline">View & Remind</a>
+                                <td class="px-4 py-3 text-slate-600 whitespace-nowrap">{{ $rec->verified_at?->format('M d, Y') }}</td>
+                                <td class="px-4 py-3 font-bold text-amber-700 whitespace-nowrap">{{ $rec->verified_at ? now()->diffInDays($rec->verified_at) : 0 }} days</td>
+                                <td class="px-4 py-3 text-right whitespace-nowrap">
+                                    <a href="{{ route('motorcycles.show', $rec->motorcycle) }}" class="inline-flex items-center text-blue-600 font-bold hover:underline whitespace-nowrap">View & Remind</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -234,20 +234,20 @@
                         <th class="px-4 py-3">Municipality</th>
                         <th class="px-4 py-3">Customers</th>
                         <th class="px-4 py-3">Motorcycles</th>
-                        <th class="px-4 py-3">Total Releases Handed Over</th>
-                        <th class="px-4 py-3 text-right">Branch Status</th>
+                        <th class="px-4 py-3 whitespace-nowrap">Total Releases Handed Over</th>
+                        <th class="px-4 py-3 text-right whitespace-nowrap">Branch Status</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     @foreach($branchSummaries as $b)
                         <tr class="hover:bg-slate-50">
-                            <td class="px-4 py-3 font-bold text-slate-900">{{ $b->name }}</td>
+                            <td class="px-4 py-3 font-bold text-slate-900 whitespace-nowrap">{{ $b->name }}</td>
                             <td class="px-4 py-3 text-slate-600">{{ $b->municipality }}, {{ $b->province }}</td>
-                            <td class="px-4 py-3 font-semibold text-slate-800">{{ $b->customers_count }}</td>
-                            <td class="px-4 py-3 font-semibold text-slate-800">{{ $b->motorcycles_count }}</td>
-                            <td class="px-4 py-3 font-bold text-emerald-700">{{ $b->release_transactions_count }} transactions</td>
-                            <td class="px-4 py-3 text-right">
-                                <span class="px-2 py-0.5 rounded text-[10px] font-bold {{ $b->is_active ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-600' }}">
+                            <td class="px-4 py-3 font-semibold text-slate-800 whitespace-nowrap">{{ $b->customers_count }}</td>
+                            <td class="px-4 py-3 font-semibold text-slate-800 whitespace-nowrap">{{ $b->motorcycles_count }}</td>
+                            <td class="px-4 py-3 font-bold text-emerald-700 whitespace-nowrap">{{ $b->release_transactions_count }} transactions</td>
+                            <td class="px-4 py-3 text-right whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap {{ $b->is_active ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-slate-100 text-slate-600 border-slate-200' }}">
                                     {{ $b->is_active ? 'Active' : 'Inactive' }}
                                 </span>
                             </td>

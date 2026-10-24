@@ -97,14 +97,14 @@
                                     <span class="block text-[10px] text-slate-400">Tries: {{ $notif->retry_count }}</span>
                                 @endif
                             </td>
-                            <td class="px-4 py-3.5 text-right space-x-2">
-                                <a href="{{ route('notifications.show', $notif) }}" class="text-xs font-bold text-slate-700 hover:text-red-600">
+                            <td class="px-4 py-3.5 text-right whitespace-nowrap space-x-2">
+                                <a href="{{ route('notifications.show', $notif) }}" class="inline-flex items-center text-xs font-bold text-slate-700 hover:text-red-600 whitespace-nowrap">
                                     View
                                 </a>
                                 @if($notif->status === 'failed' || auth()->user()->isAdmin())
                                     <form action="{{ route('notifications.resend', $notif) }}" method="POST" class="inline">
                                         @csrf
-                                        <button type="submit" class="text-xs font-bold text-red-600 hover:underline">
+                                        <button type="submit" class="inline-flex items-center text-xs font-bold text-red-600 hover:underline whitespace-nowrap">
                                             Resend
                                         </button>
                                     </form>

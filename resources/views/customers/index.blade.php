@@ -45,19 +45,19 @@
             <table class="w-full text-left text-xs">
                 <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase font-semibold">
                     <tr>
-                        <th class="px-4 py-3.5">Customer Code</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Customer Code</th>
                         <th class="px-4 py-3.5">Customer Name</th>
-                        <th class="px-4 py-3.5">Mobile Phone</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Mobile Phone</th>
                         <th class="px-4 py-3.5">Municipality / Barangay</th>
-                        <th class="px-4 py-3.5">Motorcycles</th>
-                        <th class="px-4 py-3.5">Branch</th>
-                        <th class="px-4 py-3.5 text-right">Actions</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Motorcycles</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Branch</th>
+                        <th class="px-4 py-3.5 text-right whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     @forelse($customers as $c)
                         <tr class="hover:bg-slate-50 transition">
-                            <td class="px-4 py-3.5 font-mono font-bold text-slate-900">
+                            <td class="px-4 py-3.5 font-mono font-bold text-slate-900 whitespace-nowrap">
                                 {{ $c->customer_code }}
                             </td>
                             <td class="px-4 py-3.5 font-bold text-slate-800">
@@ -65,24 +65,24 @@
                                     {{ $c->full_name }}
                                 </a>
                             </td>
-                            <td class="px-4 py-3.5 font-mono text-slate-700">
+                            <td class="px-4 py-3.5 font-mono text-slate-700 whitespace-nowrap">
                                 {{ $c->mobile_number }}
                             </td>
                             <td class="px-4 py-3.5 text-slate-600">
                                 {{ $c->barangay }}, {{ $c->municipality }}
                             </td>
-                            <td class="px-4 py-3.5">
-                                <span class="px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 font-bold text-[10px]">
+                            <td class="px-4 py-3.5 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 font-bold text-[10px] whitespace-nowrap">
                                     {{ $c->motorcycles->count() }} unit(s)
                                 </span>
                             </td>
-                            <td class="px-4 py-3.5 text-slate-500">
+                            <td class="px-4 py-3.5 text-slate-500 whitespace-nowrap">
                                 {{ $c->branch->name }}
                             </td>
-                            <td class="px-4 py-3.5 text-right space-x-2">
-                                <a href="{{ route('customers.show', $c) }}" class="text-xs font-bold text-slate-700 hover:text-red-600">View</a>
-                                <a href="{{ route('customers.edit', $c) }}" class="text-xs font-semibold text-slate-500 hover:text-slate-900">Edit</a>
-                                <a href="{{ route('motorcycles.create', ['customer_id' => $c->id]) }}" class="text-xs font-semibold text-emerald-600 hover:text-emerald-700">+ Bike</a>
+                            <td class="px-4 py-3.5 text-right whitespace-nowrap space-x-2">
+                                <a href="{{ route('customers.show', $c) }}" class="inline-flex items-center text-xs font-bold text-slate-700 hover:text-red-600 whitespace-nowrap">View</a>
+                                <a href="{{ route('customers.edit', $c) }}" class="inline-flex items-center text-xs font-semibold text-slate-500 hover:text-slate-900 whitespace-nowrap">Edit</a>
+                                <a href="{{ route('motorcycles.create', ['customer_id' => $c->id]) }}" class="inline-flex items-center text-xs font-semibold text-emerald-600 hover:text-emerald-700 whitespace-nowrap">+&nbsp;Bike</a>
                             </td>
                         </tr>
                     @empty

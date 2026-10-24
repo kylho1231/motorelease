@@ -111,14 +111,14 @@
                                     </span>
                                 @endif
                             </td>
-                            <td class="px-4 py-3.5 text-right space-x-1.5">
-                                <a href="{{ route('motorcycles.show', $bike) }}" class="text-xs font-bold text-slate-700 hover:text-red-600">View</a>
-                                <a href="{{ route('motorcycles.print_slip', $bike) }}" target="_blank" class="text-xs font-semibold text-slate-500 hover:text-slate-900" title="Print Tracking Stub">
-                                    <i data-lucide="printer" class="w-3.5 h-3.5 inline"></i> Slip
+                            <td class="px-4 py-3.5 text-right whitespace-nowrap space-x-1.5">
+                                <a href="{{ route('motorcycles.show', $bike) }}" class="inline-flex items-center text-xs font-bold text-slate-700 hover:text-red-600 whitespace-nowrap">View</a>
+                                <a href="{{ route('motorcycles.print_slip', $bike) }}" target="_blank" class="inline-flex items-center text-xs font-semibold text-slate-500 hover:text-slate-900 whitespace-nowrap" title="Print Tracking Stub">
+                                    <i data-lucide="printer" class="w-3.5 h-3.5 inline mr-1"></i> Slip
                                 </a>
                                 @if($bike->isOrcrReady() || $bike->isPlateReady())
                                     <a href="{{ route('releases.create', ['tracking_reference' => $bike->tracking_reference]) }}"
-                                       class="px-2 py-1 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold">
+                                       class="inline-flex items-center px-2 py-1 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold whitespace-nowrap">
                                         Release
                                     </a>
                                 @endif

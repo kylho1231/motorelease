@@ -115,3 +115,16 @@ table td span[class*="border"][class*="rounded"] {
     white-space: nowrap !important;
     vertical-align: middle;
 }
+
+/* Table Action Cells & Action Links Never Wrap */
+table td.text-right,
+table th.text-right {
+    white-space: nowrap !important;
+}
+
+table td.text-right a,
+table td.text-right button {
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+}
