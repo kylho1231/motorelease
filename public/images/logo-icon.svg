@@ -1,99 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" fill="none">
   <defs>
-    <!-- Background Gradient -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0F172A" />
-      <stop offset="50%" stop-color="#1E293B" />
-      <stop offset="100%" stop-color="#090D16" />
+    <!-- Yamaha Official Racing Red Gradient -->
+    <linearGradient id="yamahaRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF1A2A" />
+      <stop offset="45%" stop-color="#E60012" />
+      <stop offset="100%" stop-color="#B3000E" />
     </linearGradient>
 
-    <!-- Racing Red Gradient -->
-    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FF385C" />
-      <stop offset="40%" stop-color="#E11D48" />
-      <stop offset="100%" stop-color="#9F1239" />
+    <!-- Chrome Rim Gradient -->
+    <linearGradient id="chromeRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.4" />
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.4" />
     </linearGradient>
 
-    <!-- Speed Wing Gradient -->
-    <linearGradient id="wingGrad" x1="0%" y1="50%" x2="100%" y2="50%">
-      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#F43F5E" />
-    </linearGradient>
-
-    <!-- Metallic Silver Gradient -->
-    <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="50%" stop-color="#E2E8F0" />
-      <stop offset="100%" stop-color="#94A3B8" />
-    </linearGradient>
-
-    <!-- Golden Verification Accent -->
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FCD34D" />
-      <stop offset="100%" stop-color="#F59E0B" />
-    </linearGradient>
-
-    <!-- Drop Shadow Filter -->
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#E11D48" flood-opacity="0.4" />
-    </filter>
-
-    <filter id="plateGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.5" />
+    <!-- Deep Ambient Glow Filter -->
+    <filter id="yamahaGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#E60012" flood-opacity="0.45" />
     </filter>
   </defs>
 
-  <!-- Base Rounded Squircle -->
-  <rect x="4" y="4" width="112" height="112" rx="28" fill="url(#bgGrad)" stroke="#334155" stroke-width="2" />
+  <!-- Base Circular Plate with Glow -->
+  <circle cx="60" cy="60" r="54" fill="url(#yamahaRed)" filter="url(#yamahaGlow)" />
+  <circle cx="60" cy="60" r="54" stroke="url(#chromeRim)" stroke-width="2" />
+  <circle cx="60" cy="60" r="51.5" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="1" />
 
-  <!-- Subtle Speed Streak Lines in Background -->
-  <path d="M16 36 L48 36" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 6" opacity="0.6"/>
-  <path d="M14 48 L38 48" stroke="#334155" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-  <path d="M18 60 L32 60" stroke="#334155" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-
-  <!-- Motorcycle Aerodynamic Fairing Wing (Left/Top) -->
-  <path d="M22 76 C 28 42, 52 28, 86 24 C 70 32, 58 44, 52 64 C 44 68, 32 74, 22 76 Z" 
-        fill="url(#wingGrad)" />
-
-  <!-- Main Speed Blade / Yamaha-inspired Aero Curve -->
-  <path d="M28 82 C 38 46, 68 28, 102 26 C 88 38, 76 56, 68 84 C 54 84, 40 84, 28 82 Z" 
-        fill="url(#redGrad)" 
-        filter="url(#glow)" />
-
-  <!-- Inner Dynamic Silver Highlight -->
-  <path d="M38 78 C 46 54, 68 40, 94 34 C 82 44, 74 58, 66 78 C 56 78, 46 78, 38 78 Z" 
-        fill="url(#silverGrad)" 
-        opacity="0.85" />
-
-  <!-- Document / License Plate Badge (Right/Bottom) -->
-  <g transform="translate(56, 52)" filter="url(#plateGlow)">
-    <!-- Plate / Certificate Container -->
-    <rect x="0" y="0" width="50" height="34" rx="7" fill="#0F172A" stroke="#475569" stroke-width="1.8" />
-    
-    <!-- Top Plate Header Stripe (Official Doc feel) -->
-    <rect x="1.5" y="1.5" width="47" height="6.5" rx="5" fill="url(#redGrad)" />
-    
-    <!-- Document Notch / Security Seal -->
-    <circle cx="8" cy="18" r="3" fill="url(#goldGrad)" />
-    
-    <!-- Certified Release Checkmark -->
-    <path d="M18 20 L23 25 L34 14" 
-          stroke="#10B981" 
-          stroke-width="3" 
-          stroke-linecap="round" 
-          stroke-linejoin="round" />
-
-    <!-- Document Text Lines Indicator -->
-    <rect x="25" y="22" width="18" height="2" rx="1" fill="#94A3B8" />
-    <rect x="25" y="26" width="12" height="2" rx="1" fill="#64748B" />
+  <!-- Authentic Yamaha Motor 3-Tuning-Fork Emblem -->
+  <g transform="translate(18, 18) scale(3.5)" fill="#FFFFFF">
+    <path d="M12 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0zm0 .57C18.315.57 23.43 5.685 23.43 12c0 6.31-5.115 11.43-11.43 11.43C5.69 23.43.57 18.314.57 12 .57 5.69 5.69.57 12 .57zm0 .234c-.1 0-.183.06-.218.147l-.492 1.551A9.523 9.523 0 002.475 12c0 1.48.337 2.885.94 4.136l-1.1 1.206a.241.241 0 00-.015.262.246.246 0 00.238.115l1.592-.353a9.52 9.52 0 007.87 4.16c3.27 0 6.16-1.652 7.874-4.16l1.592.353a.236.236 0 00.23-.123.234.234 0 00-.016-.262l-1.1-1.198A9.431 9.431 0 0021.526 12a9.523 9.523 0 00-8.815-9.498L12.218.947A.237.237 0 0012 .804zm-.003.25c.024 0 .048.02.056.043l1.02 3.354a1.2 1.2 0 00-.48.957c0 .389.19.734.48.952h-.004c.436.326.718.846.718 1.429v1.12l4.326-2.497.476.825-4.802 2.77v.965l.834.48 4.802-2.774.476.825-4.326 2.5.972.56c.508.294.818.798.882 1.338v-.004a1.193 1.193 0 001.655.953l2.393 2.56c.02.02.02.047.008.07-.016.025-.04.033-.068.029l-3.413-.794a1.193 1.193 0 00-1.65-.957l.003-.004c-.5.215-1.091.199-1.6-.095l-.968-.56v4.994h-.952v-5.545l-.834-.48-.833.48v5.545h-.953V15.1l-.972.555c-.508.294-1.1.31-1.6.096l.004.004a1.193 1.193 0 00-1.651.957l-3.413.793a.054.054 0 01-.063-.028c-.016-.02-.012-.047.008-.067l2.397-2.56c.333.143.73.135 1.067-.064.338-.194.544-.528.588-.889v.004c.063-.54.373-1.044.88-1.337l.97-.56-4.327-2.496.477-.826 4.802 2.774.833-.484v-.964l-4.802-2.77.476-.826 4.326 2.496V7.79c0-.583.282-1.103.719-1.429h-.004c.29-.214.476-.56.476-.952 0-.393-.19-.738-.48-.957l1.02-3.353c.008-.028.031-.044.051-.044zm.004 5.902a.833.833 0 00-.833.833v1.67L12 9.94l.833-.48V7.789a.833.833 0 00-.833-.833zm0 4.084l-.833.48v.964l.833.476.833-.48v-.96zm-2.62 1.516l-1.444.833a.833.833 0 00-.306 1.14.822.822 0 00.723.412.83.83 0 00.416-.111l1.445-.834v-.96zm5.243 0l-.833.48V14l1.445.834a.834.834 0 00.833-1.445z"/>
   </g>
-
-  <!-- Front Wheel / Kinetic Dynamic Arc -->
-  <circle cx="42" cy="84" r="14" stroke="#475569" stroke-width="3.5" stroke-dasharray="16 8" fill="none" opacity="0.6"/>
-  <circle cx="42" cy="84" r="6" fill="url(#redGrad)"/>
-
-  <!-- High-Gloss Specular Highlight (Corner Shine) -->
-  <path d="M12 28 C 12 18, 18 12, 28 12 L 60 12 C 40 18, 22 32, 16 54 L 12 44 Z" 
-        fill="#FFFFFF" 
-        opacity="0.08" />
 </svg>

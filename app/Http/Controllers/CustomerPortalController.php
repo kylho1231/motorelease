@@ -15,6 +15,14 @@ use Illuminate\View\View;
 class CustomerPortalController extends Controller
 {
     /**
+     * Public cinematic homepage with 3D/motion design and Yamaha showcase
+     */
+    public function landing(): View
+    {
+        return view('portal.landing');
+    }
+
+    /**
      * Public tracking landing page
      */
     public function index(Request $request): View|RedirectResponse

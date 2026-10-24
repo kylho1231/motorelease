@@ -54,7 +54,7 @@
                     <label for="pin" class="block text-xs font-extrabold uppercase tracking-widest text-slate-300">
                         Verification PIN
                     </label>
-                    <span class="text-[10px] text-rose-400 font-bold uppercase tracking-wider">LAST 4 DIGITS</span>
+                    <span class="text-[10px] text-rose-400 font-bold uppercase tracking-wider">LAST 4 DIGITS OF PHONE</span>
                 </div>
                 <div class="relative">
                     <input type="password" id="pin" name="pin" maxlength="4" required inputmode="numeric"
@@ -64,8 +64,8 @@
                         <i data-lucide="lock" class="w-5 h-5"></i>
                     </div>
                 </div>
-                <p class="text-[11px] text-slate-500">
-                    Your PIN is the <strong>last 4 digits</strong> of your registered buyer mobile number.
+                <p class="text-[11px] text-slate-400">
+                    Your PIN is the <strong>last 4 digits</strong> of your registered buyer mobile phone number.
                 </p>
             </div>
 
@@ -76,6 +76,45 @@
                 Verify Document Availability
             </button>
         </form>
+
+        <!-- Verification PIN Concierge Guide (How to get your PIN) -->
+        <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300 space-y-3 shadow-xl backdrop-blur-md">
+            <div class="flex items-center gap-2.5 text-rose-400 font-bold">
+                <div class="p-1.5 rounded-lg bg-rose-950/80 border border-rose-800/60 text-rose-400">
+                    <i data-lucide="help-circle" class="w-4 h-4"></i>
+                </div>
+                <span class="text-xs uppercase tracking-wider text-white font-black">How Do I Get My Verification PIN?</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800/80 space-y-1.5">
+                    <div class="flex items-center gap-1.5 text-slate-200 font-bold text-xs">
+                        <i data-lucide="smartphone" class="w-3.5 h-3.5 text-rose-400"></i>
+                        <span>1. Your Registered Phone</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed">
+                        By default, your PIN is the <strong>last 4 digits</strong> of the mobile number you provided during purchase (e.g., phone <span class="font-mono text-rose-300">0917-xxx-1234</span> &rarr; PIN: <strong class="font-mono text-emerald-400 font-black">1234</strong>).
+                    </p>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800/80 space-y-1.5">
+                    <div class="flex items-center gap-1.5 text-slate-200 font-bold text-xs">
+                        <i data-lucide="receipt" class="w-3.5 h-3.5 text-blue-400"></i>
+                        <span>2. Official Claim Stub</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed">
+                        Check the printed <strong>MotoRelease Tracking Slip</strong> given to you upon motorcycle purchase. Your Tracking Code and 4-digit PIN are printed on the slip.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] text-slate-400 border-t border-slate-800/60">
+                <span>Need assistance?</span>
+                <span class="text-rose-400 font-semibold flex items-center gap-1">
+                    <i data-lucide="phone-call" class="w-3 h-3"></i> Yamaha San Jose Desk: 0917-123-4567
+                </span>
+            </div>
+        </div>
 
         <!-- Interactive Quick-Test Demo Drawer (GetLayers Style) -->
         <div class="mt-8 pt-6 border-t border-slate-800/80">

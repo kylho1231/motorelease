@@ -16,12 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Public Customer Tracking Portal
+| Public Customer Tracking Portal & Landing Page
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () {
-    return redirect()->route('customer.track');
-});
+Route::get('/', [CustomerPortalController::class, 'landing'])->name('home');
 
 Route::prefix('track')->name('customer.')->group(function () {
     Route::get('/', [CustomerPortalController::class, 'index'])->name('track');
