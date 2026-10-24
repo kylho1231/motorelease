@@ -64,19 +64,19 @@
             <table class="w-full text-left text-xs">
                 <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase font-semibold">
                     <tr>
-                        <th class="px-4 py-3.5">Tracking Ref</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Tracking Ref</th>
                         <th class="px-4 py-3.5">Model & Color</th>
                         <th class="px-4 py-3.5">Owner</th>
-                        <th class="px-4 py-3.5">Engine / Chassis</th>
-                        <th class="px-4 py-3.5">OR/CR Status</th>
-                        <th class="px-4 py-3.5">License Plate</th>
-                        <th class="px-4 py-3.5 text-right">Actions</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Engine / Chassis</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">OR/CR Status</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">License Plate</th>
+                        <th class="px-4 py-3.5 text-right whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     @forelse($motorcycles as $bike)
                         <tr class="hover:bg-slate-50 transition">
-                            <td class="px-4 py-3.5">
+                            <td class="px-4 py-3.5 whitespace-nowrap">
                                 <a href="{{ route('motorcycles.show', $bike) }}" class="font-mono font-bold text-red-600 hover:underline">
                                     {{ $bike->tracking_reference }}
                                 </a>
@@ -92,17 +92,17 @@
                                 </a>
                                 <span class="block text-[10px] font-mono text-slate-500">{{ $bike->customer?->mobile_number }}</span>
                             </td>
-                            <td class="px-4 py-3.5 font-mono text-[11px] text-slate-600">
+                            <td class="px-4 py-3.5 font-mono text-[11px] text-slate-600 whitespace-nowrap">
                                 <div>Eng: {{ $bike->masked_engine_number }}</div>
                                 <div>Cha: {{ $bike->masked_chassis_number }}</div>
                             </td>
-                            <td class="px-4 py-3.5">
-                                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border {{ $bike->orcrRecord?->status_badge_class }}">
+                            <td class="px-4 py-3.5 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap {{ $bike->orcrRecord?->status_badge_class }}">
                                     {{ $bike->orcrRecord?->status_label ?? 'Awaiting' }}
                                 </span>
                             </td>
-                            <td class="px-4 py-3.5">
-                                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border {{ $bike->licensePlateRecord?->status_badge_class }}">
+                            <td class="px-4 py-3.5 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap {{ $bike->licensePlateRecord?->status_badge_class }}">
                                     {{ $bike->licensePlateRecord?->status_label ?? 'Awaiting' }}
                                 </span>
                                 @if($bike->licensePlateRecord?->plate_number)

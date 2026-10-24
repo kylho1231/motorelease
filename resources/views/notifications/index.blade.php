@@ -61,18 +61,18 @@
                         <th class="px-4 py-3.5">Event Type</th>
                         <th class="px-4 py-3.5">Message Content</th>
                         <th class="px-4 py-3.5">Gateway Provider</th>
-                        <th class="px-4 py-3.5">Status</th>
-                        <th class="px-4 py-3.5 text-right">Action</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Status</th>
+                        <th class="px-4 py-3.5 text-right whitespace-nowrap">Action</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     @forelse($notifications as $notif)
                         <tr class="hover:bg-slate-50 transition">
-                            <td class="px-4 py-3.5 text-slate-600">
+                            <td class="px-4 py-3.5 text-slate-600 whitespace-nowrap">
                                 {{ $notif->created_at->format('M d, Y h:i A') }}
                                 <span class="block text-[10px] text-slate-400">By: {{ $notif->triggeredByUser?->name ?? 'Automatic' }}</span>
                             </td>
-                            <td class="px-4 py-3.5">
+                            <td class="px-4 py-3.5 whitespace-nowrap">
                                 <span class="font-mono font-bold text-slate-900">{{ $notif->recipient_number }}</span>
                                 <span class="block text-[11px] text-slate-500">{{ $notif->customer?->full_name }}</span>
                             </td>
@@ -83,14 +83,14 @@
                             <td class="px-4 py-3.5 max-w-xs text-slate-600 truncate" title="{{ $notif->message_body }}">
                                 {{ $notif->message_body }}
                             </td>
-                            <td class="px-4 py-3.5 text-slate-500 font-mono text-[11px]">
+                            <td class="px-4 py-3.5 text-slate-500 font-mono text-[11px] whitespace-nowrap">
                                 {{ $notif->provider }}
                                 @if($notif->provider_message_id)
                                     <span class="block text-[10px] text-slate-400">ID: {{ $notif->provider_message_id }}</span>
                                 @endif
                             </td>
-                            <td class="px-4 py-3.5">
-                                <span class="px-2.5 py-0.5 rounded text-[10px] font-bold border {{ $notif->status_badge_class }}">
+                            <td class="px-4 py-3.5 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap {{ $notif->status_badge_class }}">
                                     {{ ucfirst($notif->status) }}
                                 </span>
                                 @if($notif->retry_count > 0)

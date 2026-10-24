@@ -13,7 +13,7 @@
                 <h2 class="text-lg font-bold text-slate-900">{{ $notification->event_label }}</h2>
                 <p class="text-xs text-slate-500">Triggered on {{ $notification->created_at->format('F d, Y h:i:s A') }}</p>
             </div>
-            <span class="px-3 py-1 rounded-full text-xs font-bold border {{ $notification->status_badge_class }}">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border whitespace-nowrap {{ $notification->status_badge_class }}">
                 {{ ucfirst($notification->status) }}
             </span>
         </div>

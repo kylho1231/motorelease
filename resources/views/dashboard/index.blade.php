@@ -302,18 +302,18 @@
                 <table class="w-full text-left text-xs">
                     <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase font-semibold">
                         <tr>
-                            <th class="px-4 py-3">Tracking Ref</th>
+                            <th class="px-4 py-3 whitespace-nowrap">Tracking Ref</th>
                             <th class="px-4 py-3">Model</th>
                             <th class="px-4 py-3">Customer</th>
-                            <th class="px-4 py-3">OR/CR</th>
-                            <th class="px-4 py-3">Plate</th>
-                            <th class="px-4 py-3 text-right">Action</th>
+                            <th class="px-4 py-3 whitespace-nowrap">OR/CR</th>
+                            <th class="px-4 py-3 whitespace-nowrap">Plate</th>
+                            <th class="px-4 py-3 text-right whitespace-nowrap">Action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
                         @foreach($recentMotorcycles as $bm)
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="px-4 py-3 font-mono font-bold text-slate-900">
+                                <td class="px-4 py-3 font-mono font-bold text-slate-900 whitespace-nowrap">
                                     {{ $bm->tracking_reference }}
                                 </td>
                                 <td class="px-4 py-3 font-medium text-slate-800">
@@ -322,17 +322,17 @@
                                 <td class="px-4 py-3 text-slate-600">
                                     {{ $bm->customer?->full_name }}
                                 </td>
-                                <td class="px-4 py-3">
-                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold border {{ $bm->orcrRecord?->status_badge_class }}">
+                                <td class="px-4 py-3 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap {{ $bm->orcrRecord?->status_badge_class }}">
                                         {{ $bm->orcrRecord?->status_label ?? 'Pending' }}
                                     </span>
                                 </td>
-                                <td class="px-4 py-3">
-                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold border {{ $bm->licensePlateRecord?->status_badge_class }}">
+                                <td class="px-4 py-3 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap {{ $bm->licensePlateRecord?->status_badge_class }}">
                                         {{ $bm->licensePlateRecord?->status_label ?? 'Pending' }}
                                     </span>
                                 </td>
-                                <td class="px-4 py-3 text-right">
+                                <td class="px-4 py-3 text-right whitespace-nowrap">
                                     <a href="{{ route('motorcycles.show', $bm) }}" class="text-red-600 font-bold hover:underline">
                                         Details
                                     </a>

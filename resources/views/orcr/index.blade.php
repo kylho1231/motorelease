@@ -49,19 +49,19 @@
             <table class="w-full text-left text-xs">
                 <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase font-semibold">
                     <tr>
-                        <th class="px-4 py-3.5">Tracking Ref</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Tracking Ref</th>
                         <th class="px-4 py-3.5">Vehicle & Customer</th>
-                        <th class="px-4 py-3.5">Official Receipt (OR)</th>
-                        <th class="px-4 py-3.5">Registration (CR)</th>
-                        <th class="px-4 py-3.5">Status</th>
-                        <th class="px-4 py-3.5">Storage Location</th>
-                        <th class="px-4 py-3.5 text-right">Actions</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Official Receipt (OR)</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Registration (CR)</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Status</th>
+                        <th class="px-4 py-3.5 whitespace-nowrap">Storage Location</th>
+                        <th class="px-4 py-3.5 text-right whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     @forelse($records as $rec)
                         <tr class="hover:bg-slate-50 transition">
-                            <td class="px-4 py-3.5">
+                            <td class="px-4 py-3.5 whitespace-nowrap">
                                 <a href="{{ route('orcr.show', $rec) }}" class="font-mono font-bold text-red-600 hover:underline">
                                     {{ $rec->motorcycle->tracking_reference }}
                                 </a>
@@ -70,7 +70,7 @@
                                 <span class="font-bold text-slate-800">{{ $rec->motorcycle->model }}</span>
                                 <span class="block text-[11px] text-slate-500">{{ $rec->motorcycle->customer?->full_name }}</span>
                             </td>
-                            <td class="px-4 py-3.5">
+                            <td class="px-4 py-3.5 whitespace-nowrap">
                                 <div class="flex items-center gap-1.5">
                                     <i data-lucide="{{ $rec->is_or_received ? 'check-circle' : 'clock' }}"
                                        class="w-3.5 h-3.5 {{ $rec->is_or_received ? 'text-emerald-600' : 'text-slate-300' }}"></i>
@@ -79,7 +79,7 @@
                                     </span>
                                 </div>
                             </td>
-                            <td class="px-4 py-3.5">
+                            <td class="px-4 py-3.5 whitespace-nowrap">
                                 <div class="flex items-center gap-1.5">
                                     <i data-lucide="{{ $rec->is_cr_received ? 'check-circle' : 'clock' }}"
                                        class="w-3.5 h-3.5 {{ $rec->is_cr_received ? 'text-emerald-600' : 'text-slate-300' }}"></i>
@@ -88,8 +88,8 @@
                                     </span>
                                 </div>
                             </td>
-                            <td class="px-4 py-3.5">
-                                <span class="px-2.5 py-0.5 rounded text-[10px] font-bold border {{ $rec->status_badge_class }}">
+                            <td class="px-4 py-3.5 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap {{ $rec->status_badge_class }}">
                                     {{ $rec->status_label }}
                                 </span>
                             </td>

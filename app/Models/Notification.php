@@ -67,11 +67,11 @@ class Notification extends Model
     public function getStatusBadgeClassAttribute(): string
     {
         return match ($this->status) {
-            'queued' => 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-300',
-            'sent' => 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300',
-            'delivered' => 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300',
-            'failed' => 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-900/30 dark:text-rose-300',
-            default => 'bg-gray-100 text-gray-700',
+            'queued' => 'inline-flex items-center whitespace-nowrap bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-300',
+            'sent' => 'inline-flex items-center whitespace-nowrap bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300',
+            'delivered' => 'inline-flex items-center whitespace-nowrap bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300',
+            'failed' => 'inline-flex items-center whitespace-nowrap bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-900/30 dark:text-rose-300',
+            default => 'inline-flex items-center whitespace-nowrap bg-gray-100 text-gray-700',
         };
     }
 }

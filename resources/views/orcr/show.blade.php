@@ -22,7 +22,7 @@
         </div>
 
         <div class="flex items-center gap-2">
-            <span class="px-3 py-1 rounded-lg text-xs font-bold border {{ $orcrRecord->status_badge_class }}">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border whitespace-nowrap {{ $orcrRecord->status_badge_class }}">
                 Current Status: {{ $orcrRecord->status_label }}
             </span>
             <a href="{{ route('motorcycles.show', $orcrRecord->motorcycle) }}" class="text-xs text-slate-500 hover:text-slate-900 font-semibold">

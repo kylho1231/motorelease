@@ -69,7 +69,7 @@
                             <p class="text-[11px] text-slate-500">Official Receipt & Certificate of Registration</p>
                         </div>
                     </div>
-                    <span class="px-2.5 py-1 rounded text-xs font-bold border {{ $motorcycle->orcrRecord?->status_badge_class }}">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border whitespace-nowrap {{ $motorcycle->orcrRecord?->status_badge_class }}">
                         {{ $motorcycle->orcrRecord?->status_label ?? 'Awaiting' }}
                     </span>
                 </div>
@@ -157,7 +157,7 @@
                             <p class="text-[11px] text-slate-500">Physical Metal Plate Availability</p>
                         </div>
                     </div>
-                    <span class="px-2.5 py-1 rounded text-xs font-bold border {{ $motorcycle->licensePlateRecord?->status_badge_class }}">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border whitespace-nowrap {{ $motorcycle->licensePlateRecord?->status_badge_class }}">
                         {{ $motorcycle->licensePlateRecord?->status_label ?? 'Awaiting' }}
                     </span>
                 </div>
@@ -287,7 +287,7 @@
                         <div class="space-y-1">
                             <div class="flex items-center gap-2">
                                 <span class="font-bold text-slate-800">{{ $notif->event_label }}</span>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-bold border {{ $notif->status_badge_class }}">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap {{ $notif->status_badge_class }}">
                                     {{ ucfirst($notif->status) }}
                                 </span>
                                 <span class="text-slate-400 text-[11px]">{{ $notif->created_at->format('M d, Y h:i A') }}</span>

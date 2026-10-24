@@ -93,13 +93,13 @@ class OrcrRecord extends Model
     public function getStatusBadgeClassAttribute(): string
     {
         return match ($this->status) {
-            'not_yet_confirmed' => 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-gray-800 dark:text-gray-300',
-            'awaiting_documents' => 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300',
-            'partially_received' => 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-300',
-            'ready_for_pickup' => 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300',
-            'on_hold' => 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-900/30 dark:text-rose-300',
-            'claimed' => 'bg-slate-100 text-slate-700 border-slate-300 dark:bg-slate-800 dark:text-slate-300',
-            default => 'bg-gray-100 text-gray-700',
+            'not_yet_confirmed' => 'inline-flex items-center whitespace-nowrap bg-gray-100 text-gray-700 border-gray-200 dark:bg-gray-800 dark:text-gray-300',
+            'awaiting_documents' => 'inline-flex items-center whitespace-nowrap bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300',
+            'partially_received' => 'inline-flex items-center whitespace-nowrap bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-300',
+            'ready_for_pickup' => 'inline-flex items-center whitespace-nowrap bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300',
+            'on_hold' => 'inline-flex items-center whitespace-nowrap bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-900/30 dark:text-rose-300',
+            'claimed' => 'inline-flex items-center whitespace-nowrap bg-slate-100 text-slate-700 border-slate-300 dark:bg-slate-800 dark:text-slate-300',
+            default => 'inline-flex items-center whitespace-nowrap bg-gray-100 text-gray-700',
         };
     }
 }

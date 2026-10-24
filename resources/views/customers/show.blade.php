@@ -78,13 +78,13 @@
                             <div class="text-right text-xs space-y-1">
                                 <div class="flex items-center gap-1.5 justify-end">
                                     <span class="text-slate-400 text-[11px]">OR/CR:</span>
-                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold border {{ $bike->orcrRecord?->status_badge_class }}">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap {{ $bike->orcrRecord?->status_badge_class }}">
                                         {{ $bike->orcrRecord?->status_label ?? 'Pending' }}
                                     </span>
                                 </div>
                                 <div class="flex items-center gap-1.5 justify-end">
                                     <span class="text-slate-400 text-[11px]">Plate:</span>
-                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold border {{ $bike->licensePlateRecord?->status_badge_class }}">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap {{ $bike->licensePlateRecord?->status_badge_class }}">
                                         {{ $bike->licensePlateRecord?->status_label ?? 'Pending' }}
                                     </span>
                                 </div>
@@ -118,7 +118,7 @@
                         <div class="space-y-1 text-xs">
                             <div class="flex items-center gap-2">
                                 <span class="font-bold text-slate-800">{{ $notif->event_label }}</span>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-bold border {{ $notif->status_badge_class }}">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap {{ $notif->status_badge_class }}">
                                     {{ ucfirst($notif->status) }}
                                 </span>
                                 <span class="text-slate-400 text-[11px]">{{ $notif->created_at->format('M d, Y h:i A') }}</span>

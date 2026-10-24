@@ -87,7 +87,7 @@
                         </div>
                     </div>
 
-                    <span class="px-3 py-1 rounded-full text-xs font-bold border {{ $motorcycle->orcrRecord?->status_badge_class }}">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border whitespace-nowrap {{ $motorcycle->orcrRecord?->status_badge_class }}">
                         {{ $motorcycle->orcrRecord?->status_label ?? 'Awaiting Documents' }}
                     </span>
                 </div>
@@ -167,7 +167,7 @@
                         </div>
                     </div>
 
-                    <span class="px-3 py-1 rounded-full text-xs font-bold border {{ $motorcycle->licensePlateRecord?->status_badge_class }}">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border whitespace-nowrap {{ $motorcycle->licensePlateRecord?->status_badge_class }}">
                         {{ $motorcycle->licensePlateRecord?->status_label ?? 'Awaiting Plate' }}
                     </span>
                 </div>
