@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/images/motorelease-logo-emblem.jpg" width="160" alt="MotoRelease Logo Emblem" style="border-radius: 28px;" />
+</p>
+
 # 🏍️ MotoRelease
 ### Web-Based OR/CR and License Plate Tracking, Releasing, and Automated Customer Notification System
 
