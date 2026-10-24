@@ -182,3 +182,20 @@ table td.text-right button {
 .backface-hidden {
     backface-visibility: hidden;
 }
+
+/* Mobile Typography & Responsive Safeguards */
+@media (max-width: 640px) {
+    html, body {
+        overflow-x: hidden;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    /* Prevent iOS Safari from auto-zooming input fields */
+    input[type="text"],
+    input[type="password"],
+    input[type="number"],
+    input[type="search"],
+    select {
+        font-size: 16px;
+    }
+}

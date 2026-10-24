@@ -7,9 +7,9 @@
 <div class="space-y-6">
 
     <!-- Header Actions & Search -->
-    <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="bg-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
         <form method="GET" action="{{ route('customers.index') }}" class="w-full sm:w-auto flex-1 flex flex-wrap items-center gap-2">
-            <div class="relative flex-1 min-w-[240px]">
+            <div class="relative flex-1 min-w-[200px]">
                 <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3"></i>
                 <input type="text" name="search" value="{{ $search }}"
                        placeholder="Search by name, customer code, mobile number, barangay..."
@@ -33,9 +33,9 @@
             @endif
         </form>
 
-        <a href="{{ route('customers.create') }}" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition">
+        <a href="{{ route('customers.create') }}" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition shrink-0">
             <i data-lucide="user-plus" class="w-4 h-4"></i>
-            Register Customer
+            <span>Register Customer</span>
         </a>
     </div>
 

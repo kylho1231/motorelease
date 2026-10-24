@@ -200,13 +200,13 @@
     <div class="flex-1 flex flex-col min-w-0 overflow-y-auto">
 
         <!-- Top Header Navigation -->
-        <header class="h-16 bg-white border-b border-slate-200 sticky top-0 z-30 flex items-center justify-between px-4 sm:px-8 shadow-xs">
-            <div class="flex items-center gap-3">
-                <button @click="sidebarOpen = true" class="lg:hidden text-slate-600 hover:text-slate-900 p-2 rounded-lg hover:bg-slate-100">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+        <header class="h-16 bg-white border-b border-slate-200 sticky top-0 z-30 flex items-center justify-between px-3 sm:px-8 shadow-xs">
+            <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                <button @click="sidebarOpen = true" class="lg:hidden text-slate-600 hover:text-slate-900 p-1.5 sm:p-2 rounded-lg hover:bg-slate-100 shrink-0">
+                    <i data-lucide="menu" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                 </button>
-                <div class="hidden sm:block">
-                    <h1 class="text-lg font-bold text-slate-900">@yield('page-title', 'Dealership Management')</h1>
+                <div class="min-w-0">
+                    <h1 class="text-sm sm:text-lg font-bold text-slate-900 truncate">@yield('page-title', 'Dealership Management')</h1>
                 </div>
             </div>
 

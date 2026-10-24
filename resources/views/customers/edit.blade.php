@@ -4,15 +4,15 @@
 @section('page-title', 'Edit Customer Information')
 
 @section('content')
-<div class="max-w-3xl space-y-6">
+<div class="max-w-3xl space-y-4 sm:space-y-6">
 
-    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
-        <div class="border-b border-slate-100 pb-4 mb-6 flex items-center justify-between">
+    <div class="bg-white rounded-xl sm:rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-xs">
+        <div class="border-b border-slate-100 pb-3 sm:pb-4 mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-                <h2 class="text-base font-bold text-slate-900">Update Customer Records</h2>
-                <p class="text-xs text-slate-500">Edit contact details and residential address</p>
+                <h2 class="text-sm sm:text-base font-bold text-slate-900">Update Customer Records</h2>
+                <p class="text-[11px] sm:text-xs text-slate-500">Edit contact details and residential address</p>
             </div>
-            <span class="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-100 border border-slate-200 text-slate-700">
+            <span class="font-mono text-[11px] sm:text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-100 border border-slate-200 text-slate-700 w-fit">
                 {{ $customer->customer_code }}
             </span>
         </div>

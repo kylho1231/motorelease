@@ -4,12 +4,12 @@
 @section('page-title', 'Register New Dealership Customer')
 
 @section('content')
-<div class="max-w-3xl space-y-6">
+<div class="max-w-3xl space-y-4 sm:space-y-6">
 
-    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
-        <div class="border-b border-slate-100 pb-4 mb-6">
-            <h2 class="text-base font-bold text-slate-900">Customer Registration Form</h2>
-            <p class="text-xs text-slate-500">
+    <div class="bg-white rounded-xl sm:rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-xs">
+        <div class="border-b border-slate-100 pb-3 sm:pb-4 mb-4 sm:mb-6">
+            <h2 class="text-sm sm:text-base font-bold text-slate-900">Customer Registration Form</h2>
+            <p class="text-[11px] sm:text-xs text-slate-500">
                 Collect essential contact and identity information required for motorcycle document release notifications.
             </p>
         </div>

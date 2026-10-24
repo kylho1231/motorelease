@@ -7,19 +7,19 @@
 <div class="space-y-6">
 
     <!-- Top Profile Header -->
-    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div class="flex items-center gap-4">
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-800 text-white flex items-center justify-center font-black text-xl shadow-md">
+    <div class="bg-white rounded-xl sm:rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+            <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-800 text-white flex items-center justify-center font-black text-base sm:text-xl shadow-md shrink-0">
                 {{ strtoupper(substr($customer->first_name, 0, 1) . substr($customer->last_name, 0, 1)) }}
             </div>
-            <div>
-                <div class="flex items-center gap-2.5">
-                    <h2 class="text-xl font-bold text-slate-900">{{ $customer->full_name }}</h2>
-                    <span class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-100 border border-slate-200 text-slate-700">
+            <div class="min-w-0">
+                <div class="flex flex-wrap items-center gap-1.5 sm:gap-2.5">
+                    <h2 class="text-base sm:text-xl font-bold text-slate-900 truncate">{{ $customer->full_name }}</h2>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-mono font-bold bg-slate-100 border border-slate-200 text-slate-700">
                         {{ $customer->customer_code }}
                     </span>
                 </div>
-                <p class="text-xs text-slate-500 mt-1 flex flex-wrap items-center gap-3">
+                <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5 sm:mt-1 flex flex-wrap items-center gap-2 sm:gap-3">
                     <span class="flex items-center gap-1"><i data-lucide="phone" class="w-3.5 h-3.5 text-slate-400"></i> {{ $customer->mobile_number }}</span>
                     <span>&bull;</span>
                     <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i> {{ $customer->address_line }}, {{ $customer->barangay }}, {{ $customer->municipality }}</span>
@@ -27,12 +27,12 @@
             </div>
         </div>
 
-        <div class="flex items-center gap-2">
-            <a href="{{ route('customers.edit', $customer) }}" class="px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-50 transition flex items-center gap-1.5">
-                <i data-lucide="edit-3" class="w-3.5 h-3.5"></i> Edit Profile
+        <div class="flex items-center gap-2 w-full md:w-auto">
+            <a href="{{ route('customers.edit', $customer) }}" class="flex-1 md:flex-none justify-center px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-50 transition flex items-center gap-1.5">
+                <i data-lucide="edit-3" class="w-3.5 h-3.5"></i> <span>Edit Profile</span>
             </a>
-            <a href="{{ route('motorcycles.create', ['customer_id' => $customer->id]) }}" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-sm transition flex items-center gap-1.5">
-                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add Motorcycle
+            <a href="{{ route('motorcycles.create', ['customer_id' => $customer->id]) }}" class="flex-1 md:flex-none justify-center px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-sm transition flex items-center gap-1.5">
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i> <span>Add Unit</span>
             </a>
         </div>
     </div>
