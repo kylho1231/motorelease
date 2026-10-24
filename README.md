@@ -1,6 +1,13 @@
 # 🏍️ MotoRelease
 ### Web-Based OR/CR and License Plate Tracking, Releasing, and Automated Customer Notification System
 
+[![Live on Vercel](https://img.shields.io/badge/Vercel-Live%20Demo-black?style=for-the-badge&logo=vercel)](https://motorelease.vercel.app)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-kylho1231%2Fmotorelease-181717?style=for-the-badge&logo=github)](https://github.com/kylho1231/motorelease)
+
+- 🌐 **Production Vercel URL:** [https://motorelease.vercel.app](https://motorelease.vercel.app)
+- 👤 **Live Customer Tracking Portal:** [https://motorelease.vercel.app/track](https://motorelease.vercel.app/track)
+- 🔐 **Dealership Staff Console:** [https://motorelease.vercel.app/login](https://motorelease.vercel.app/login)
+
 > **Independent Project Brand Notice:**  
 > **MotoRelease** is an independent, dealer-level document and license plate releasing management system designed for motorcycle dealerships (pilot implementation prepared for a participating Yamaha dealership in San Jose de Buenavista, Antique, Philippines).  
 > *Note:* This application does not claim official endorsement by Yamaha Philippines nor direct integration with the Land Transportation Office (LTO) government databases. All availability tracking reflects verified physical arrival and release status at the dealership level.
