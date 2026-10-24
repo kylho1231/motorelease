@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Background Gradient for Icon -->
+    <linearGradient id="darkLogoBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="50%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- Racing Red Gradient -->
+    <linearGradient id="darkLogoRedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF4D6D" />
+      <stop offset="40%" stop-color="#EF4444" />
+      <stop offset="100%" stop-color="#B91C1C" />
+    </linearGradient>
+
+    <!-- Silver Gradient -->
+    <linearGradient id="darkLogoSilverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#CBD5E1" />
+      <stop offset="100%" stop-color="#64748B" />
+    </linearGradient>
+
+    <linearGradient id="darkLogoGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+
+    <filter id="darkLogoGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#EF4444" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Left Icon Lockup (56x56 embedded) -->
+  <g transform="translate(4, 4)">
+    <rect width="56" height="56" rx="15" fill="url(#darkLogoBgGrad)" stroke="#334155" stroke-width="1.2" />
+
+    <!-- Motorcycle Aero Wing Curve -->
+    <path d="M12 40 C 16 22, 32 14, 48 13 C 40 18, 34 26, 30 40 C 24 42, 17 43, 12 40 Z" 
+          fill="url(#darkLogoRedGrad)" 
+          filter="url(#darkLogoGlow)" />
+
+    <!-- Inner Silver Accent -->
+    <path d="M18 39 C 23 27, 34 20, 46 17 C 39 23, 35 30, 31 39 Z" 
+          fill="url(#darkLogoSilverGrad)" 
+          opacity="0.9" />
+
+    <!-- License Plate & Verified Badge -->
+    <g transform="translate(26, 26)">
+      <rect width="25" height="17" rx="3.5" fill="#0B132B" stroke="#475569" stroke-width="1" />
+      <rect x="1" y="1" width="23" height="3.5" rx="2" fill="url(#darkLogoRedGrad)" />
+      <circle cx="4.5" cy="9" r="1.5" fill="url(#darkLogoGoldGrad)" />
+      <path d="M9 10 L11.5 12.5 L17 7" stroke="#10B981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+
+    <!-- Dynamic Wheel Element -->
+    <circle cx="21" cy="42" r="7" stroke="#475569" stroke-width="2" stroke-dasharray="8 4" fill="none" opacity="0.7"/>
+    <circle cx="21" cy="42" r="3" fill="url(#darkLogoRedGrad)"/>
+  </g>
+
+  <!-- Typography Brand Lockup for Dark Backgrounds -->
+  <!-- "Moto" in pure crisp white -->
+  <text x="74" y="36" 
+        font-family="Plus Jakarta Sans, Montserrat, Inter, system-ui, sans-serif" 
+        font-size="28" 
+        font-weight="800" 
+        fill="#FFFFFF" 
+        letter-spacing="-0.03em">Moto<tspan fill="#EF4444">Release</tspan></text>
+
+  <!-- Subtitle Tagline in light slate -->
+  <text x="75" y="50" 
+        font-family="Plus Jakarta Sans, Montserrat, Inter, system-ui, sans-serif" 
+        font-size="9" 
+        font-weight="700" 
+        fill="#94A3B8" 
+        letter-spacing="0.16em">DOCUMENT &amp; LICENSE PLATE SYSTEM</text>
+</svg>

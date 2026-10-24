@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name', 'MotoRelease') }} - Employee Login</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
@@ -12,9 +13,7 @@
 
     <div class="sm:mx-auto sm:w-full sm:max-w-md text-center px-4">
         <!-- Logo -->
-        <div class="mx-auto w-14 h-14 rounded-2xl bg-gradient-to-tr from-red-600 to-rose-500 flex items-center justify-center shadow-xl shadow-red-900/50 text-white font-black text-2xl tracking-tight mb-4">
-            MR
-        </div>
+        <img src="{{ asset('images/logo-icon.svg') }}" alt="MotoRelease Emblem" class="mx-auto w-16 h-16 rounded-2xl shadow-xl shadow-red-900/40 object-contain mb-4">
         <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
             Moto<span class="text-red-500">Release</span> System
         </h2>

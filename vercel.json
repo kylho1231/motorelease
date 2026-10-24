@@ -14,8 +14,12 @@
       "dest": "/public/build/$1"
     },
     {
-      "src": "/favicon.ico",
-      "dest": "/public/favicon.ico"
+      "src": "/images/(.*)",
+      "dest": "/public/images/$1"
+    },
+    {
+      "src": "/favicon.(ico|svg)",
+      "dest": "/public/favicon.$1"
     },
     {
       "src": "/robots.txt",

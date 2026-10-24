@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="50%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#090D16" />
+    </linearGradient>
+
+    <!-- Racing Red Gradient -->
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF385C" />
+      <stop offset="40%" stop-color="#E11D48" />
+      <stop offset="100%" stop-color="#9F1239" />
+    </linearGradient>
+
+    <!-- Speed Wing Gradient -->
+    <linearGradient id="wingGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#F43F5E" />
+    </linearGradient>
+
+    <!-- Metallic Silver Gradient -->
+    <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#E2E8F0" />
+      <stop offset="100%" stop-color="#94A3B8" />
+    </linearGradient>
+
+    <!-- Golden Verification Accent -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#E11D48" flood-opacity="0.4" />
+    </filter>
+
+    <filter id="plateGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Base Rounded Squircle -->
+  <rect x="4" y="4" width="112" height="112" rx="28" fill="url(#bgGrad)" stroke="#334155" stroke-width="2" />
+
+  <!-- Subtle Speed Streak Lines in Background -->
+  <path d="M16 36 L48 36" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 6" opacity="0.6"/>
+  <path d="M14 48 L38 48" stroke="#334155" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+  <path d="M18 60 L32 60" stroke="#334155" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Motorcycle Aerodynamic Fairing Wing (Left/Top) -->
+  <path d="M22 76 C 28 42, 52 28, 86 24 C 70 32, 58 44, 52 64 C 44 68, 32 74, 22 76 Z" 
+        fill="url(#wingGrad)" />
+
+  <!-- Main Speed Blade / Yamaha-inspired Aero Curve -->
+  <path d="M28 82 C 38 46, 68 28, 102 26 C 88 38, 76 56, 68 84 C 54 84, 40 84, 28 82 Z" 
+        fill="url(#redGrad)" 
+        filter="url(#glow)" />
+
+  <!-- Inner Dynamic Silver Highlight -->
+  <path d="M38 78 C 46 54, 68 40, 94 34 C 82 44, 74 58, 66 78 C 56 78, 46 78, 38 78 Z" 
+        fill="url(#silverGrad)" 
+        opacity="0.85" />
+
+  <!-- Document / License Plate Badge (Right/Bottom) -->
+  <g transform="translate(56, 52)" filter="url(#plateGlow)">
+    <!-- Plate / Certificate Container -->
+    <rect x="0" y="0" width="50" height="34" rx="7" fill="#0F172A" stroke="#475569" stroke-width="1.8" />
+    
+    <!-- Top Plate Header Stripe (Official Doc feel) -->
+    <rect x="1.5" y="1.5" width="47" height="6.5" rx="5" fill="url(#redGrad)" />
+    
+    <!-- Document Notch / Security Seal -->
+    <circle cx="8" cy="18" r="3" fill="url(#goldGrad)" />
+    
+    <!-- Certified Release Checkmark -->
+    <path d="M18 20 L23 25 L34 14" 
+          stroke="#10B981" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+
+    <!-- Document Text Lines Indicator -->
+    <rect x="25" y="22" width="18" height="2" rx="1" fill="#94A3B8" />
+    <rect x="25" y="26" width="12" height="2" rx="1" fill="#64748B" />
+  </g>
+
+  <!-- Front Wheel / Kinetic Dynamic Arc -->
+  <circle cx="42" cy="84" r="14" stroke="#475569" stroke-width="3.5" stroke-dasharray="16 8" fill="none" opacity="0.6"/>
+  <circle cx="42" cy="84" r="6" fill="url(#redGrad)"/>
+
+  <!-- High-Gloss Specular Highlight (Corner Shine) -->
+  <path d="M12 28 C 12 18, 18 12, 28 12 L 60 12 C 40 18, 22 32, 16 54 L 12 44 Z" 
+        fill="#FFFFFF" 
+        opacity="0.08" />
+</svg>

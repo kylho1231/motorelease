@@ -7,6 +7,8 @@
 
     <title>{{ config('app.name', 'MotoRelease') }} - @yield('title', 'Dealership Management')</title>
 
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,9 +36,7 @@
         <!-- Brand Header -->
         <div class="h-16 flex items-center justify-between px-6 bg-slate-950 border-b border-slate-800">
             <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-600 to-rose-500 flex items-center justify-center shadow-lg shadow-red-900/40 text-white font-extrabold text-xl tracking-tighter">
-                    MR
-                </div>
+                <img src="{{ asset('images/logo-icon.svg') }}" alt="MotoRelease" class="w-10 h-10 rounded-xl shadow-lg shadow-red-900/40 object-contain">
                 <div>
                     <span class="text-lg font-bold tracking-tight text-white flex items-center gap-1">
                         Moto<span class="text-red-500">Release</span>

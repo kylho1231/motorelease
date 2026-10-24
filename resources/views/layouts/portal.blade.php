@@ -7,6 +7,8 @@
 
     <title>{{ config('app.name', 'MotoRelease') }} - Customer Tracking Portal</title>
 
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,15 +27,13 @@
     <!-- Customer Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <a href="{{ route('customer.track') }}" class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-red-600 to-rose-500 flex items-center justify-center shadow-md shadow-red-900/30 text-white font-extrabold text-lg">
-                    MR
-                </div>
+            <a href="{{ route('customer.track') }}" class="flex items-center gap-3">
+                <img src="{{ asset('images/logo-icon.svg') }}" alt="MotoRelease" class="w-10 h-10 rounded-xl shadow-md shadow-red-900/20 object-contain">
                 <div>
-                    <span class="text-base font-bold tracking-tight text-slate-900">
+                    <span class="text-base font-extrabold tracking-tight text-slate-900">
                         Moto<span class="text-red-600">Release</span>
                     </span>
-                    <span class="block text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Document Tracking Portal</span>
+                    <span class="block text-[10px] text-slate-500 font-bold uppercase tracking-wider">Document Tracking Portal</span>
                 </div>
             </a>
 
