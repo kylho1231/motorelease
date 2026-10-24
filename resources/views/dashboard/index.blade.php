@@ -7,16 +7,19 @@
 <div class="space-y-6">
 
     <!-- Top Action Bar & Branch Filter -->
-    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/90 shadow-xs">
         <div>
-            <h2 class="text-lg font-bold text-slate-900">Operational Overview</h2>
-            <p class="text-xs text-slate-500">Live statistics computed directly from verified dealership database records</p>
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-600 animate-pulse"></span>
+                <h2 class="text-lg font-black tracking-tight text-slate-900">Operational Overview</h2>
+            </div>
+            <p class="text-xs text-slate-500 mt-0.5">Live statistics computed directly from verified dealership database records</p>
         </div>
 
         <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto">
             @if(auth()->user()->isAdmin())
                 <form method="GET" action="{{ route('dashboard') }}" class="flex items-center gap-2">
-                    <select name="branch_id" onchange="this.form.submit()" class="text-xs font-semibold px-3 py-2 rounded-xl border border-slate-300 bg-white text-slate-700 focus:ring-2 focus:ring-red-500">
+                    <select name="branch_id" onchange="this.form.submit()" class="text-xs font-semibold px-3 py-2 rounded-xl border border-slate-300 bg-white text-slate-700 focus:ring-2 focus:ring-rose-500">
                         <option value="">All Branches</option>
                         @foreach($branches as $b)
                             <option value="{{ $b->id }}" {{ $selectedBranchId == $b->id ? 'selected' : '' }}>
@@ -27,12 +30,12 @@
                 </form>
             @endif
 
-            <a href="{{ route('releases.create') }}" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition">
+            <a href="{{ route('releases.create') }}" class="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition">
                 <i data-lucide="check-circle" class="w-4 h-4"></i>
                 Claim Item
             </a>
 
-            <a href="{{ route('motorcycles.create') }}" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition">
+            <a href="{{ route('motorcycles.create') }}" class="px-4 py-2 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition">
                 <i data-lucide="plus-circle" class="w-4 h-4"></i>
                 New Motorcycle
             </a>
@@ -43,63 +46,63 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
 
         <!-- Registered Customers -->
-        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+        <div data-spotlight class="getlayers-card bg-white p-5 rounded-2xl border border-slate-200/90 shadow-xs">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-slate-500">Total Customers</span>
-                <span class="p-2 rounded-xl bg-slate-100 text-slate-700"><i data-lucide="users" class="w-4 h-4"></i></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Customers</span>
+                <span class="p-2.5 rounded-xl bg-slate-100 text-slate-700"><i data-lucide="users" class="w-4 h-4"></i></span>
             </div>
-            <div class="mt-2 flex items-baseline gap-2">
-                <span class="text-2xl font-extrabold text-slate-900">{{ number_format($totalCustomers) }}</span>
-                <span class="text-[11px] text-slate-400">Registered</span>
+            <div class="mt-3 flex items-baseline gap-2">
+                <span class="text-2xl font-black tracking-tight text-slate-900">{{ number_format($totalCustomers) }}</span>
+                <span class="text-[11px] text-slate-400 font-medium">Registered</span>
             </div>
-            <a href="{{ route('customers.index') }}" class="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-red-600 hover:text-red-700">
+            <a href="{{ route('customers.index') }}" class="mt-2.5 inline-flex items-center gap-1 text-[11px] font-bold text-rose-600 hover:text-rose-700">
                 View all <i data-lucide="arrow-right" class="w-3 h-3"></i>
             </a>
         </div>
 
         <!-- Registered Motorcycles -->
-        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+        <div data-spotlight class="getlayers-card bg-white p-5 rounded-2xl border border-slate-200/90 shadow-xs">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-slate-500">Motorcycles</span>
-                <span class="p-2 rounded-xl bg-slate-100 text-slate-700"><i data-lucide="bike" class="w-4 h-4"></i></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Motorcycles</span>
+                <span class="p-2.5 rounded-xl bg-slate-100 text-slate-700"><i data-lucide="bike" class="w-4 h-4"></i></span>
             </div>
-            <div class="mt-2 flex items-baseline gap-2">
-                <span class="text-2xl font-extrabold text-slate-900">{{ number_format($totalMotorcycles) }}</span>
-                <span class="text-[11px] text-slate-400">Total Units</span>
+            <div class="mt-3 flex items-baseline gap-2">
+                <span class="text-2xl font-black tracking-tight text-slate-900">{{ number_format($totalMotorcycles) }}</span>
+                <span class="text-[11px] text-slate-400 font-medium">Total Units</span>
             </div>
-            <a href="{{ route('motorcycles.index') }}" class="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-red-600 hover:text-red-700">
+            <a href="{{ route('motorcycles.index') }}" class="mt-2.5 inline-flex items-center gap-1 text-[11px] font-bold text-rose-600 hover:text-rose-700">
                 Manage units <i data-lucide="arrow-right" class="w-3 h-3"></i>
             </a>
         </div>
 
         <!-- Overdue Unclaimed (>14 Days) -->
-        <div class="bg-white p-4 rounded-2xl border border-amber-200 bg-amber-50/20 shadow-xs">
+        <div data-spotlight class="getlayers-card bg-white p-5 rounded-2xl border border-amber-200 bg-amber-50/20 shadow-xs">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-amber-800">Unclaimed (&gt;14d)</span>
-                <span class="p-2 rounded-xl bg-amber-100 text-amber-700"><i data-lucide="clock" class="w-4 h-4"></i></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-800">Unclaimed (&gt;14d)</span>
+                <span class="p-2.5 rounded-xl bg-amber-100 text-amber-700"><i data-lucide="clock" class="w-4 h-4"></i></span>
             </div>
-            <div class="mt-2 flex items-baseline gap-2">
-                <span class="text-2xl font-extrabold text-amber-900">{{ number_format($totalUnclaimedOverdue) }}</span>
-                <span class="text-[11px] text-amber-700">Items Aging</span>
+            <div class="mt-3 flex items-baseline gap-2">
+                <span class="text-2xl font-black tracking-tight text-amber-900">{{ number_format($totalUnclaimedOverdue) }}</span>
+                <span class="text-[11px] text-amber-700 font-medium">Items Aging</span>
             </div>
-            <a href="{{ route('reports.index') }}" class="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 hover:text-amber-800">
+            <a href="{{ route('reports.index') }}" class="mt-2.5 inline-flex items-center gap-1 text-[11px] font-bold text-amber-700 hover:text-amber-800">
                 Review aging <i data-lucide="arrow-right" class="w-3 h-3"></i>
             </a>
         </div>
 
         <!-- SMS Failures -->
-        <div class="bg-white p-4 rounded-2xl border {{ $failedNotifications > 0 ? 'border-rose-300 bg-rose-50/30' : 'border-slate-200' }} shadow-xs">
+        <div data-spotlight class="getlayers-card bg-white p-5 rounded-2xl border {{ $failedNotifications > 0 ? 'border-rose-300 bg-rose-50/30' : 'border-slate-200/90' }} shadow-xs">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold {{ $failedNotifications > 0 ? 'text-rose-800' : 'text-slate-500' }}">SMS Issues</span>
-                <span class="p-2 rounded-xl {{ $failedNotifications > 0 ? 'bg-rose-100 text-rose-700' : 'bg-slate-100 text-slate-700' }}">
+                <span class="text-xs font-bold uppercase tracking-wider {{ $failedNotifications > 0 ? 'text-rose-800' : 'text-slate-500' }}">SMS Issues</span>
+                <span class="p-2.5 rounded-xl {{ $failedNotifications > 0 ? 'bg-rose-100 text-rose-700' : 'bg-slate-100 text-slate-700' }}">
                     <i data-lucide="alert-octagon" class="w-4 h-4"></i>
                 </span>
             </div>
-            <div class="mt-2 flex items-baseline gap-2">
-                <span class="text-2xl font-extrabold {{ $failedNotifications > 0 ? 'text-rose-700' : 'text-slate-900' }}">{{ $failedNotifications }}</span>
-                <span class="text-[11px] text-slate-400">Failed / Retry</span>
+            <div class="mt-3 flex items-baseline gap-2">
+                <span class="text-2xl font-black tracking-tight {{ $failedNotifications > 0 ? 'text-rose-700' : 'text-slate-900' }}">{{ $failedNotifications }}</span>
+                <span class="text-[11px] text-slate-400 font-medium">Failed / Retry</span>
             </div>
-            <a href="{{ route('notifications.index', ['status' => 'failed']) }}" class="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-rose-600 hover:text-rose-700">
+            <a href="{{ route('notifications.index', ['status' => 'failed']) }}" class="mt-2.5 inline-flex items-center gap-1 text-[11px] font-bold text-rose-600 hover:text-rose-700">
                 Inspect SMS <i data-lucide="arrow-right" class="w-3 h-3"></i>
             </a>
         </div>

@@ -1,182 +1,213 @@
 @extends('layouts.portal')
 
 @section('content')
-<div class="max-w-2xl mx-auto space-y-6">
+<div class="max-w-3xl mx-auto space-y-8">
 
-    <!-- Top Greeting & Unit Banner -->
-    <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xl">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
+    <!-- Top Navigation Breadcrumb -->
+    <div class="flex items-center justify-between text-xs">
+        <a href="{{ route('customer.track') }}" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition font-medium">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            Check Another Motorcycle
+        </a>
+
+        <div class="flex items-center gap-2">
+            <span class="text-slate-500 font-mono text-[11px]">REF:</span>
+            <span class="font-mono text-xs font-bold text-rose-400 bg-rose-950/70 border border-rose-800/60 px-2.5 py-1 rounded-lg">
+                {{ $motorcycle->tracking_reference }}
+            </span>
+        </div>
+    </div>
+
+    <!-- GetLayers Telemetry Deck: Vehicle & Customer Identity -->
+    <div data-spotlight class="getlayers-glass rounded-3xl p-6 sm:p-8 relative overflow-hidden group">
+        <div class="absolute -right-16 -top-16 w-48 h-48 bg-rose-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-5 pb-6 border-b border-slate-800/80 relative z-10">
             <div>
-                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Welcome back</span>
-                <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900">
-                    Hello, {{ $motorcycle->customer?->first_name }} {{ substr($motorcycle->customer?->last_name ?? '', 0, 1) }}.
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-rose-400 bg-rose-950/80 border border-rose-800/50 px-2.5 py-0.5 rounded-full">
+                        Registered Buyer
+                    </span>
+                    <span class="text-xs text-slate-400 font-mono">{{ $motorcycle->customer?->masked_mobile }}</span>
+                </div>
+                <h1 class="text-2xl sm:text-3xl font-black text-white mt-1.5 tracking-tight">
+                    {{ $motorcycle->customer?->first_name }} {{ substr($motorcycle->customer?->last_name ?? '', 0, 1) }}.
                 </h1>
-                <p class="text-xs text-slate-500 mt-0.5">
-                    Notification Contact: <span class="font-mono text-slate-700">{{ $motorcycle->customer?->masked_mobile }}</span>
+                <p class="text-xs text-slate-400 mt-0.5">
+                    Assigned Dealership: <span class="text-slate-200 font-bold">{{ $motorcycle->branch->name }}</span>
                 </p>
             </div>
 
-            <div class="text-left sm:text-right">
-                <span class="block text-[10px] font-bold uppercase tracking-wider text-slate-400">Tracking Reference</span>
-                <span class="font-mono text-base font-extrabold text-red-600">{{ $motorcycle->tracking_reference }}</span>
+            <!-- Vehicle Model Hero Badge -->
+            <div class="text-left sm:text-right bg-slate-950/60 border border-slate-800 p-3.5 rounded-2xl sm:min-w-44">
+                <span class="block text-[10px] font-extrabold uppercase tracking-widest text-slate-500">Motorcycle Unit</span>
+                <span class="text-base font-black text-white block">{{ $motorcycle->model }}</span>
+                <span class="text-xs text-rose-400 font-medium">{{ $motorcycle->color }} &bull; {{ $motorcycle->year_model }}</span>
             </div>
         </div>
 
-        <!-- Masked Motorcycle Specifications -->
-        <div class="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
-            <div>
-                <span class="text-slate-400 block text-[11px]">Motorcycle Model</span>
-                <strong class="text-slate-900 text-sm font-bold block">{{ $motorcycle->model }}</strong>
-                <span class="text-slate-500">{{ $motorcycle->color }}</span>
+        <!-- Masked Identifiers Grid (RA 10173 Compliant) -->
+        <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs relative z-10">
+            <div class="p-3 rounded-2xl bg-slate-950/60 border border-slate-800/80">
+                <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Manufacturer</span>
+                <strong class="text-white text-sm font-bold block mt-0.5">{{ $motorcycle->manufacturer }}</strong>
             </div>
-            <div>
-                <span class="text-slate-400 block text-[11px]">Year Model</span>
-                <strong class="text-slate-900 text-sm font-bold block">{{ $motorcycle->year_model }}</strong>
-                <span class="text-slate-500">{{ $motorcycle->manufacturer }}</span>
+
+            <div class="p-3 rounded-2xl bg-slate-950/60 border border-slate-800/80">
+                <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Purchase Date</span>
+                <strong class="text-white text-sm font-bold block mt-0.5">{{ $motorcycle->purchase_date->format('M d, Y') }}</strong>
             </div>
-            <div>
-                <span class="text-slate-400 block text-[11px]">Masked Engine No</span>
-                <span class="font-mono text-slate-800 font-bold block mt-1">{{ $motorcycle->masked_engine_number }}</span>
+
+            <div class="p-3 rounded-2xl bg-slate-950/60 border border-slate-800/80">
+                <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Masked Engine No</span>
+                <span class="font-mono text-slate-200 text-xs font-bold block mt-0.5">{{ $motorcycle->masked_engine_number }}</span>
             </div>
-            <div>
-                <span class="text-slate-400 block text-[11px]">Masked Chassis No</span>
-                <span class="font-mono text-slate-800 font-bold block mt-1">{{ $motorcycle->masked_chassis_number }}</span>
+
+            <div class="p-3 rounded-2xl bg-slate-950/60 border border-slate-800/80">
+                <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Masked Chassis No</span>
+                <span class="font-mono text-slate-200 text-xs font-bold block mt-0.5">{{ $motorcycle->masked_chassis_number }}</span>
             </div>
         </div>
     </div>
 
-    <!-- Independent Status Cards -->
-    <div class="space-y-4">
+    <!-- Dual Readiness Gauges: Independent OR/CR & Plate Status Deck -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        <!-- 1. OR/CR Document Status Card -->
-        <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-7 shadow-lg">
-            <div class="flex items-start justify-between gap-4 pb-4 border-b border-slate-100">
-                <div class="flex items-center gap-3">
-                    <div class="p-3 rounded-2xl bg-red-50 text-red-600">
-                        <i data-lucide="file-text" class="w-6 h-6"></i>
+        <!-- 1. OR/CR Document Package Card -->
+        <div data-spotlight class="getlayers-glass rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between group">
+            <div class="space-y-4">
+                <div class="flex items-start justify-between gap-3 pb-4 border-b border-slate-800/80">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-2xl bg-rose-950/80 border border-rose-800/60 text-rose-400 flex items-center justify-center shadow-lg shadow-rose-950/50">
+                            <i data-lucide="file-text" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-base font-bold text-white">OR/CR Package</h2>
+                            <p class="text-xs text-slate-400">Official Receipt &amp; Reg. Certificate</p>
+                        </div>
                     </div>
-                    <div>
-                        <h2 class="text-base font-bold text-slate-900">OR/CR Document Package</h2>
-                        <p class="text-xs text-slate-500">Official Receipt & Certificate of Registration</p>
-                    </div>
+
+                    <span class="px-3 py-1 rounded-full text-xs font-bold border {{ $motorcycle->orcrRecord?->status_badge_class }}">
+                        {{ $motorcycle->orcrRecord?->status_label ?? 'Awaiting Documents' }}
+                    </span>
                 </div>
 
-                <span class="px-3 py-1 rounded-full text-xs font-bold border {{ $motorcycle->orcrRecord?->status_badge_class }}">
-                    {{ $motorcycle->orcrRecord?->status_label ?? 'Awaiting Documents' }}
-                </span>
-            </div>
-
-            <!-- Detailed Document Status Indicator -->
-            <div class="mt-5 space-y-4">
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2.5">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">Physical Availability at Dealership</span>
+                <!-- Physical Verification Gate Checkpoints -->
+                <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80 space-y-3">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-slate-500 block">
+                        Physical Vault Verification
+                    </span>
 
                     <div class="flex items-center justify-between text-xs">
-                        <span class="flex items-center gap-2">
+                        <span class="flex items-center gap-2 text-slate-300">
                             <i data-lucide="{{ $motorcycle->orcrRecord?->is_or_received ? 'check-circle-2' : 'clock' }}"
-                               class="w-4 h-4 {{ $motorcycle->orcrRecord?->is_or_received ? 'text-emerald-600' : 'text-slate-300' }}"></i>
+                               class="w-4 h-4 {{ $motorcycle->orcrRecord?->is_or_received ? 'text-emerald-400' : 'text-slate-600' }}"></i>
                             Official Receipt (OR)
                         </span>
-                        <strong class="{{ $motorcycle->orcrRecord?->is_or_received ? 'text-emerald-700' : 'text-slate-400 font-normal' }}">
-                            {{ $motorcycle->orcrRecord?->is_or_received ? 'Physically Verified at Branch' : 'Processing with LTO' }}
+                        <strong class="{{ $motorcycle->orcrRecord?->is_or_received ? 'text-emerald-400' : 'text-slate-500 font-normal' }}">
+                            {{ $motorcycle->orcrRecord?->is_or_received ? 'Verified in Branch Vault' : 'In Transit / LTO' }}
                         </strong>
                     </div>
 
                     <div class="flex items-center justify-between text-xs">
-                        <span class="flex items-center gap-2">
+                        <span class="flex items-center gap-2 text-slate-300">
                             <i data-lucide="{{ $motorcycle->orcrRecord?->is_cr_received ? 'check-circle-2' : 'clock' }}"
-                               class="w-4 h-4 {{ $motorcycle->orcrRecord?->is_cr_received ? 'text-emerald-600' : 'text-slate-300' }}"></i>
-                            Certificate of Registration (CR)
+                               class="w-4 h-4 {{ $motorcycle->orcrRecord?->is_cr_received ? 'text-emerald-400' : 'text-slate-600' }}"></i>
+                            Certificate of Reg. (CR)
                         </span>
-                        <strong class="{{ $motorcycle->orcrRecord?->is_cr_received ? 'text-emerald-700' : 'text-slate-400 font-normal' }}">
-                            {{ $motorcycle->orcrRecord?->is_cr_received ? 'Physically Verified at Branch' : 'Processing with LTO' }}
+                        <strong class="{{ $motorcycle->orcrRecord?->is_cr_received ? 'text-emerald-400' : 'text-slate-500 font-normal' }}">
+                            {{ $motorcycle->orcrRecord?->is_cr_received ? 'Verified in Branch Vault' : 'In Transit / LTO' }}
                         </strong>
                     </div>
                 </div>
 
+                <!-- Callout Banner -->
                 @if($motorcycle->isOrcrReady())
-                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs flex items-start gap-3">
-                        <i data-lucide="party-popper" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
+                    <div class="p-4 rounded-2xl bg-emerald-950/70 border border-emerald-800 text-emerald-200 text-xs flex items-start gap-3 shadow-lg shadow-emerald-950/40">
+                        <i data-lucide="party-popper" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
                         <div>
-                            <strong class="font-bold text-sm block">Your OR/CR is Ready for Collection!</strong>
-                            <p class="mt-0.5 text-emerald-800 leading-relaxed">
-                                Both original documents have been verified and placed in secure storage. You may visit the dealership branch during operating hours to collect.
+                            <strong class="font-bold text-sm text-emerald-300 block">Ready for Collection!</strong>
+                            <p class="mt-1 leading-relaxed text-[11px] text-emerald-200/90">
+                                Both original documents are physically verified and ready at the counter. Please bring your 2 valid IDs.
                             </p>
                         </div>
                     </div>
                 @elseif($motorcycle->isOrcrClaimed())
-                    <div class="p-4 rounded-2xl bg-slate-100 border border-slate-300 text-slate-700 text-xs flex items-center gap-3">
-                        <i data-lucide="check-check" class="w-5 h-5 text-slate-600 shrink-0"></i>
-                        <span>This OR/CR package was claimed from the dealership on {{ $motorcycle->orcrRecord->claim_date?->format('F d, Y') }}.</span>
+                    <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 text-slate-400 text-xs flex items-center gap-2.5">
+                        <i data-lucide="check-check" class="w-4 h-4 text-blue-400 shrink-0"></i>
+                        <span>Claimed on {{ $motorcycle->orcrRecord->claim_date?->format('M d, Y') }}.</span>
                     </div>
                 @elseif($motorcycle->orcrRecord?->status === 'on_hold')
-                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start gap-3">
-                        <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+                    <div class="p-4 rounded-2xl bg-amber-950/60 border border-amber-800 text-amber-200 text-xs flex items-start gap-2.5">
+                        <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
                         <div>
-                            <strong>Document Temporarily On Hold:</strong>
-                            <p class="mt-0.5">Your documents are undergoing clerical verification with the LTO. Our staff will update you once cleared.</p>
+                            <strong class="text-amber-300 block">Temporarily On Hold:</strong>
+                            <p class="mt-0.5 text-[11px]">{{ $motorcycle->orcrRecord->hold_reason ?? 'Clerical verification with LTO.' }}</p>
                         </div>
                     </div>
                 @else
-                    <p class="text-xs text-slate-500">
-                        Estimated availability varies by LTO batch processing. You will receive an automatic SMS once both documents arrive and are verified.
+                    <p class="text-[11px] text-slate-500 leading-relaxed">
+                        Automatic SMS will be dispatched the moment both documents pass physical inspection at San Jose branch.
                     </p>
                 @endif
             </div>
         </div>
 
-        <!-- 2. License Plate Status Card -->
-        <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-7 shadow-lg">
-            <div class="flex items-start justify-between gap-4 pb-4 border-b border-slate-100">
-                <div class="flex items-center gap-3">
-                    <div class="p-3 rounded-2xl bg-blue-50 text-blue-600">
-                        <i data-lucide="shield" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-base font-bold text-slate-900">Physical License Plate</h2>
-                        <p class="text-xs text-slate-500">Metal Motorcycle License Plate</p>
-                    </div>
-                </div>
-
-                <span class="px-3 py-1 rounded-full text-xs font-bold border {{ $motorcycle->licensePlateRecord?->status_badge_class }}">
-                    {{ $motorcycle->licensePlateRecord?->status_label ?? 'Awaiting Plate' }}
-                </span>
-            </div>
-
-            <div class="mt-5 space-y-4">
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="text-slate-500">Plate Number:</span>
-                        <strong class="font-mono text-sm {{ $motorcycle->licensePlateRecord?->plate_number ? 'text-slate-900 font-extrabold' : 'text-slate-400 font-normal italic' }}">
-                            {{ $motorcycle->licensePlateRecord?->plate_number ?: 'Awaiting assignment from LTO' }}
-                        </strong>
-                    </div>
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="text-slate-500">Physical Plate at Dealership:</span>
-                        <strong class="{{ $motorcycle->licensePlateRecord?->is_plate_received ? 'text-emerald-700' : 'text-slate-400 font-normal' }}">
-                            {{ $motorcycle->licensePlateRecord?->is_plate_received ? 'Confirmed in Dealership Bin' : 'In production / transit' }}
-                        </strong>
-                    </div>
-                </div>
-
-                @if($motorcycle->isPlateReady())
-                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs flex items-start gap-3">
-                        <i data-lucide="party-popper" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
+        <!-- 2. Physical License Plate Card -->
+        <div data-spotlight class="getlayers-glass rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between group">
+            <div class="space-y-4">
+                <div class="flex items-start justify-between gap-3 pb-4 border-b border-slate-800/80">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-950/80 border border-blue-800/60 text-blue-400 flex items-center justify-center shadow-lg shadow-blue-950/50">
+                            <i data-lucide="shield" class="w-6 h-6"></i>
+                        </div>
                         <div>
-                            <strong class="font-bold text-sm block">Your Physical Plate is Ready for Pickup!</strong>
-                            <p class="mt-0.5 text-emerald-800 leading-relaxed">
-                                The metal license plate is in stock at our branch. Please present your valid ID when collecting.
+                            <h2 class="text-base font-bold text-white">License Plate</h2>
+                            <p class="text-xs text-slate-400">Metal / Temporary Stamped Plate</p>
+                        </div>
+                    </div>
+
+                    <span class="px-3 py-1 rounded-full text-xs font-bold border {{ $motorcycle->licensePlateRecord?->status_badge_class }}">
+                        {{ $motorcycle->licensePlateRecord?->status_label ?? 'Awaiting Plate' }}
+                    </span>
+                </div>
+
+                <!-- Plate Data Deck -->
+                <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80 space-y-2.5">
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-slate-400">Assigned Plate No:</span>
+                        <strong class="font-mono text-sm {{ $motorcycle->licensePlateRecord?->plate_number ? 'text-white font-extrabold bg-slate-900 px-2 py-0.5 rounded-lg border border-slate-700' : 'text-slate-500 font-normal italic' }}">
+                            {{ $motorcycle->licensePlateRecord?->plate_number ?: 'Awaiting assignment' }}
+                        </strong>
+                    </div>
+
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-slate-400">Physical Stock in Branch:</span>
+                        <strong class="{{ $motorcycle->licensePlateRecord?->is_plate_received ? 'text-emerald-400' : 'text-slate-500 font-normal' }}">
+                            {{ $motorcycle->licensePlateRecord?->is_plate_received ? 'In Stock in Branch Bin' : 'Pending batch dispatch' }}
+                        </strong>
+                    </div>
+                </div>
+
+                <!-- Plate Callout Banner -->
+                @if($motorcycle->isPlateReady())
+                    <div class="p-4 rounded-2xl bg-emerald-950/70 border border-emerald-800 text-emerald-200 text-xs flex items-start gap-3 shadow-lg shadow-emerald-950/40">
+                        <i data-lucide="party-popper" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong class="font-bold text-sm text-emerald-300 block">Metal Plate Ready for Collection!</strong>
+                            <p class="mt-1 leading-relaxed text-[11px] text-emerald-200/90">
+                                Your physical motorcycle plate is in stock. Please bring your claim stub and 2 valid IDs.
                             </p>
                         </div>
                     </div>
                 @elseif($motorcycle->isPlateClaimed())
-                    <div class="p-4 rounded-2xl bg-slate-100 border border-slate-300 text-slate-700 text-xs flex items-center gap-3">
-                        <i data-lucide="check-check" class="w-5 h-5 text-slate-600 shrink-0"></i>
-                        <span>This license plate was claimed from the dealership on {{ $motorcycle->licensePlateRecord->claim_date?->format('F d, Y') }}.</span>
+                    <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 text-slate-400 text-xs flex items-center gap-2.5">
+                        <i data-lucide="check-check" class="w-4 h-4 text-blue-400 shrink-0"></i>
+                        <span>Claimed on {{ $motorcycle->licensePlateRecord->claim_date?->format('M d, Y') }}.</span>
                     </div>
                 @else
-                    <p class="text-xs text-slate-500">
-                        License plates are produced and distributed in batches by the LTO plate-making plant. You will receive an SMS as soon as your plate arrives at the branch.
+                    <p class="text-[11px] text-slate-500 leading-relaxed">
+                        License plates are stamped and shipped in regional LTO batches. You will receive an SMS alert upon arrival.
                     </p>
                 @endif
             </div>
@@ -184,32 +215,104 @@
 
     </div>
 
-    <!-- Branch Pickup Guidelines & Location -->
-    <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-7 shadow-lg space-y-4">
-        <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-            <i data-lucide="map-pin" class="w-4 h-4 text-red-600"></i>
-            Collection Branch & Pickup Requirements
-        </h3>
-
-        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-2">
-            <div>
-                <strong class="text-slate-900 font-bold text-sm">{{ $motorcycle->branch->name }}</strong>
-                <p class="text-slate-600 mt-0.5">{{ $motorcycle->branch->full_address }}</p>
-            </div>
-            <div class="flex flex-wrap items-center gap-4 text-slate-500 pt-2 border-t border-slate-200">
-                <span>Operating Hours: <strong>{{ $motorcycle->branch->operating_hours }}</strong></span>
-                <span>Hotline: <strong>{{ $motorcycle->branch->contact_number }}</strong></span>
-            </div>
+    <!-- GetLayers Roadmap Ascent: Visual Lifecycle Spine -->
+    <div class="getlayers-glass rounded-3xl p-6 sm:p-8 space-y-6">
+        <div class="flex items-center justify-between">
+            <h3 class="text-sm font-extrabold uppercase tracking-widest text-slate-300 flex items-center gap-2">
+                <i data-lucide="git-commit" class="w-4 h-4 text-rose-500"></i>
+                Document Lifecycle &amp; Verification Journey
+            </h3>
+            <span class="text-[10px] text-slate-500 font-mono">AUTOMATED WORKFLOW</span>
         </div>
 
-        <div class="p-4 rounded-2xl bg-red-50/60 border border-red-100 text-xs text-slate-700 space-y-2">
-            <strong class="text-red-900 font-bold block uppercase tracking-wider text-[11px]">Requirements to Bring When Claiming:</strong>
-            <ul class="list-disc list-inside space-y-1">
-                <li>Your printed tracking slip or tracking reference number (<strong>{{ $motorcycle->tracking_reference }}</strong>).</li>
-                <li>Two (2) original valid government-issued IDs of the registered owner.</li>
-                <li>Official delivery receipt or dealership sales invoice.</li>
-                <li>If representative: Signed authorization letter and owner's ID photocopy.</li>
-            </ul>
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 relative">
+            <!-- Step 1 -->
+            <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 text-xs space-y-1.5 relative">
+                <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-emerald-950 border border-emerald-500 text-emerald-400 font-bold flex items-center justify-center text-[10px]">
+                        ✓
+                    </span>
+                    <strong class="text-slate-200">1. Unit Purchase</strong>
+                </div>
+                <p class="text-[11px] text-slate-500">Motorcycle registered &amp; sales invoice transmitted.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 text-xs space-y-1.5 relative">
+                <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full {{ ($motorcycle->orcrRecord?->is_or_received || $motorcycle->orcrRecord?->is_cr_received) ? 'bg-emerald-950 border-emerald-500 text-emerald-400' : 'bg-slate-900 border-slate-700 text-slate-500' }} border font-bold flex items-center justify-center text-[10px]">
+                        {{ ($motorcycle->orcrRecord?->is_or_received || $motorcycle->orcrRecord?->is_cr_received) ? '✓' : '2' }}
+                    </span>
+                    <strong class="text-slate-200">2. Arrival at Branch</strong>
+                </div>
+                <p class="text-[11px] text-slate-500">Documents delivered to dealership branch safe.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 text-xs space-y-1.5 relative">
+                <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full {{ $motorcycle->isOrcrReady() ? 'bg-emerald-950 border-emerald-500 text-emerald-400' : 'bg-slate-900 border-slate-700 text-slate-500' }} border font-bold flex items-center justify-center text-[10px]">
+                        {{ $motorcycle->isOrcrReady() ? '✓' : '3' }}
+                    </span>
+                    <strong class="text-slate-200">3. Verification Gate</strong>
+                </div>
+                <p class="text-[11px] text-slate-500">Physical audit of both OR &amp; CR completed.</p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 text-xs space-y-1.5 relative">
+                <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full {{ $motorcycle->isOrcrClaimed() ? 'bg-blue-950 border-blue-500 text-blue-400' : 'bg-slate-900 border-slate-700 text-slate-500' }} border font-bold flex items-center justify-center text-[10px]">
+                        {{ $motorcycle->isOrcrClaimed() ? '✓' : '4' }}
+                    </span>
+                    <strong class="text-slate-200">4. Customer Handover</strong>
+                </div>
+                <p class="text-[11px] text-slate-500">Claim receipt issued &amp; e-signature archived.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Collection Concierge & Requirements Deck -->
+    <div class="getlayers-glass rounded-3xl p-6 sm:p-8 space-y-5">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800/80">
+            <h3 class="text-sm font-extrabold text-white flex items-center gap-2.5">
+                <i data-lucide="map-pin" class="w-4 h-4 text-rose-500"></i>
+                Dealership Location &amp; Pickup Guidelines
+            </h3>
+            <span class="text-xs text-rose-400 font-bold">SAN JOSE BRANCH</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Branch Location Info -->
+            <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80 space-y-2 text-xs">
+                <strong class="text-white font-bold text-sm block">{{ $motorcycle->branch->name }}</strong>
+                <p class="text-slate-400 leading-relaxed">{{ $motorcycle->branch->full_address }}</p>
+                <div class="pt-2 border-t border-slate-800/60 space-y-1 text-slate-400">
+                    <div>Hours: <strong class="text-slate-200">{{ $motorcycle->branch->operating_hours }}</strong></div>
+                    <div>Hotline: <strong class="text-rose-400 font-mono">{{ $motorcycle->branch->contact_number }}</strong></div>
+                </div>
+            </div>
+
+            <!-- Mandatory Requirements -->
+            <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80 text-xs space-y-2">
+                <strong class="text-rose-400 font-bold uppercase tracking-wider text-[11px] block">
+                    Checklist to Bring:
+                </strong>
+                <ul class="space-y-1.5 text-slate-300">
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i>
+                        <span>Tracking reference slip (<strong>{{ $motorcycle->tracking_reference }}</strong>).</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i>
+                        <span>Two (2) original valid government-issued IDs of the registered owner.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i>
+                        <span>If representative: Signed Special Power of Attorney / Authorization Letter &amp; ID photocopy.</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 

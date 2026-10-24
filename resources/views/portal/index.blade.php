@@ -1,93 +1,147 @@
 @extends('layouts.portal')
 
 @section('content')
-<div class="max-w-md mx-auto space-y-6">
+<div class="max-w-lg mx-auto space-y-8">
 
-    <div class="text-center space-y-2 mb-6">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200">
-            <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
-            Live Document Availability Check
+    <!-- Cinematic Hero Section -->
+    <div class="text-center space-y-3">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-900/90 text-rose-300 border border-rose-500/30 shadow-lg shadow-rose-950/40 backdrop-blur-md">
+            <span class="relative flex h-2 w-2">
+                <span class="getlayers-radar absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
+            </span>
+            <span class="tracking-wide uppercase text-[10px] font-extrabold">Live Document Availability Engine</span>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Track Your OR/CR & Plate
+        <h1 class="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
+            Track Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-red-400 to-orange-400">OR/CR &amp; Plate</span>
         </h1>
-        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-            Enter your official tracking reference number from your claim slip and the last 4 digits of your registered phone number.
+        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-md mx-auto">
+            Verify real-time document release status directly from the dealership vault in San Jose de Buenavista.
         </p>
     </div>
 
-    <!-- Tracking Verification Form Card -->
-    <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xl">
-        <form action="{{ route('customer.verify') }}" method="POST" class="space-y-5">
+    <!-- GetLayers Spotlight Tracking Card -->
+    <div data-spotlight class="getlayers-glass rounded-3xl p-6 sm:p-9 relative overflow-hidden group">
+        <!-- Subtle Top Glow Bar -->
+        <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-rose-500 to-transparent opacity-80"></div>
+
+        <form action="{{ route('customer.verify') }}" method="POST" class="space-y-6">
             @csrf
 
-            <div>
-                <label for="tracking_reference" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                    Tracking Reference Code
-                </label>
+            <!-- Tracking Reference Input -->
+            <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                    <label for="tracking_reference" class="block text-xs font-extrabold uppercase tracking-widest text-slate-300">
+                        Tracking Reference Code
+                    </label>
+                    <span class="text-[10px] text-slate-500 font-mono">FROM CLAIM SLIP</span>
+                </div>
                 <div class="relative">
                     <input type="text" id="tracking_reference" name="tracking_reference"
                            value="{{ old('tracking_reference', $ref) }}" required autofocus
-                           placeholder="e.g. MR-SJA-2026-000003"
-                           class="w-full pl-4 pr-10 py-3 rounded-2xl border border-slate-300 text-sm font-mono font-bold uppercase placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
-                    <div class="absolute right-3.5 top-3.5 text-slate-400">
+                           placeholder="MR-SJA-2026-000003"
+                           class="w-full pl-4 pr-12 py-3.5 rounded-2xl bg-slate-950/80 border border-slate-700/80 text-white font-mono text-sm font-bold tracking-wide placeholder-slate-600 focus:outline-hidden focus:ring-2 focus:ring-rose-500 focus:border-rose-500 transition shadow-inner">
+                    <div class="absolute right-4 top-3.5 text-slate-500 pointer-events-none">
                         <i data-lucide="qr-code" class="w-5 h-5"></i>
                     </div>
                 </div>
-                <p class="text-[11px] text-slate-400 mt-1">Printed on your official dealership claim stub.</p>
+                <p class="text-[11px] text-slate-500">Scan QR code on your slip or type reference manually.</p>
             </div>
 
-            <div>
-                <label for="pin" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                    Security Verification PIN
-                </label>
+            <!-- PIN Input -->
+            <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                    <label for="pin" class="block text-xs font-extrabold uppercase tracking-widest text-slate-300">
+                        Verification PIN
+                    </label>
+                    <span class="text-[10px] text-rose-400 font-bold uppercase tracking-wider">LAST 4 DIGITS</span>
+                </div>
                 <div class="relative">
                     <input type="password" id="pin" name="pin" maxlength="4" required inputmode="numeric"
                            placeholder="••••"
-                           class="w-full pl-4 pr-10 py-3 rounded-2xl border border-slate-300 text-base font-mono tracking-widest placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
-                    <div class="absolute right-3.5 top-3.5 text-slate-400">
+                           class="w-full pl-4 pr-12 py-3.5 rounded-2xl bg-slate-950/80 border border-slate-700/80 text-white font-mono text-lg font-black tracking-widest placeholder-slate-600 focus:outline-hidden focus:ring-2 focus:ring-rose-500 focus:border-rose-500 transition shadow-inner">
+                    <div class="absolute right-4 top-3.5 text-slate-500 pointer-events-none">
                         <i data-lucide="lock" class="w-5 h-5"></i>
                     </div>
                 </div>
-                <p class="text-[11px] text-slate-400 mt-1">
-                    Your security PIN is the <strong>last 4 digits</strong> of your registered mobile number.
+                <p class="text-[11px] text-slate-500">
+                    Your PIN is the <strong>last 4 digits</strong> of your registered buyer mobile number.
                 </p>
             </div>
 
+            <!-- Submit CTA -->
             <button type="submit"
-                    class="w-full py-3.5 px-4 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 shadow-lg shadow-red-900/30 transition flex items-center justify-center gap-2">
+                    class="w-full py-4 px-6 rounded-2xl text-sm font-black uppercase tracking-wider text-white bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 shadow-xl shadow-rose-950/60 active:scale-[0.99] transition duration-200 flex items-center justify-center gap-2.5">
                 <i data-lucide="search" class="w-4 h-4"></i>
-                Check Document Availability
+                Verify Document Availability
             </button>
         </form>
 
-        <!-- Quick Demo Hint for Testing -->
-        <div class="mt-6 pt-5 border-t border-slate-100 text-center">
-            <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Sample Tracking References:</p>
-            <div class="space-y-1 text-xs">
-                <div class="flex items-center justify-between p-1.5 rounded-lg bg-slate-50 border border-slate-200">
-                    <span class="font-mono text-slate-700">MR-SJA-2026-000003</span>
-                    <button type="button" onclick="fillTest('MR-SJA-2026-000003', '8921')" class="text-red-600 font-bold hover:underline">Use Demo (Ready)</button>
-                </div>
-                <div class="flex items-center justify-between p-1.5 rounded-lg bg-slate-50 border border-slate-200">
-                    <span class="font-mono text-slate-700">MR-SJA-2026-000002</span>
-                    <button type="button" onclick="fillTest('MR-SJA-2026-000002', '3412')" class="text-red-600 font-bold hover:underline">Use Demo (Partial)</button>
-                </div>
-                <div class="flex items-center justify-between p-1.5 rounded-lg bg-slate-50 border border-slate-200">
-                    <span class="font-mono text-slate-700">MR-SJA-2026-000005</span>
-                    <button type="button" onclick="fillTest('MR-SJA-2026-000005', '2388')" class="text-red-600 font-bold hover:underline">Use Demo (Claimed)</button>
-                </div>
+        <!-- Interactive Quick-Test Demo Drawer (GetLayers Style) -->
+        <div class="mt-8 pt-6 border-t border-slate-800/80">
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">One-Click Testing Scenarios</span>
+                <span class="text-[9px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 font-mono">PILOT DATA</span>
+            </div>
+
+            <div class="grid grid-cols-1 gap-2 text-xs">
+                <!-- Ready Demo -->
+                <button type="button" onclick="fillTest('MR-SJA-2026-000003', '8921')"
+                        class="p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition flex items-center justify-between text-left group">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-xs shadow-emerald-400/50"></span>
+                        <div>
+                            <span class="font-mono text-xs text-slate-200 font-bold block">MR-SJA-2026-000003</span>
+                            <span class="text-[10px] text-slate-500">NMAX 155 &bull; PIN: 8921</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-950/80 text-emerald-300 border border-emerald-800/50">
+                        Ready for Pickup
+                    </span>
+                </button>
+
+                <!-- Partial Demo -->
+                <button type="button" onclick="fillTest('MR-SJA-2026-000002', '3412')"
+                        class="p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-900 border border-slate-800 hover:border-amber-500/40 transition flex items-center justify-between text-left group">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2 h-2 rounded-full bg-amber-400 shadow-xs shadow-amber-400/50"></span>
+                        <div>
+                            <span class="font-mono text-xs text-slate-200 font-bold block">MR-SJA-2026-000002</span>
+                            <span class="text-[10px] text-slate-500">Aerox 155 &bull; PIN: 3412</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-950/80 text-amber-300 border border-amber-800/50">
+                        Partially Received
+                    </span>
+                </button>
+
+                <!-- Claimed Demo -->
+                <button type="button" onclick="fillTest('MR-SJA-2026-000005', '2388')"
+                        class="p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-900 border border-slate-800 hover:border-blue-500/40 transition flex items-center justify-between text-left group">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2 h-2 rounded-full bg-blue-400 shadow-xs shadow-blue-400/50"></span>
+                        <div>
+                            <span class="font-mono text-xs text-slate-200 font-bold block">MR-SJA-2026-000005</span>
+                            <span class="text-[10px] text-slate-500">Sniper 155 &bull; PIN: 2388</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-950/80 text-blue-300 border border-blue-800/50">
+                        Claimed &amp; Released
+                    </span>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Privacy & Security Notice -->
-    <div class="p-4 rounded-2xl bg-white border border-slate-200 text-xs text-slate-500 flex items-start gap-3 shadow-xs">
-        <i data-lucide="shield-check" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
+    <!-- Data Privacy Assurance Deck -->
+    <div class="p-5 rounded-2xl bg-slate-950/60 border border-slate-800/80 text-xs text-slate-400 flex items-start gap-3.5 shadow-lg backdrop-blur-md">
+        <div class="p-2 rounded-xl bg-emerald-950/80 border border-emerald-800/60 text-emerald-400 shrink-0">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+        </div>
         <div class="space-y-1">
-            <strong class="text-slate-800">Your Privacy is Protected</strong>
-            <p class="leading-relaxed">
-                In compliance with Philippine Republic Act 10173, sensitive vehicle identifiers (engine, chassis, and ID numbers) are masked on public displays.
+            <strong class="text-slate-200 font-bold block">Philippine Data Privacy Act (RA 10173) Protected</strong>
+            <p class="leading-relaxed text-slate-400 text-[11px]">
+                Sensitive vehicle identifiers (engine, chassis, and ID serials) are cryptographically masked. Contact numbers are protected under two-factor reference validation.
             </p>
         </div>
     </div>
