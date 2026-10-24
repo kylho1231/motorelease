@@ -18,8 +18,21 @@ foreach ($storageDirs as $dir) {
     }
 }
 
-// Database setup for Vercel serverless
-if (!getenv('DB_HOST') || getenv('DB_CONNECTION') === 'sqlite') {
+// Database setup for Vercel serverless:
+// Detect PostgreSQL or remote database credentials (Supabase, Neon, Railway, RDS, etc.)
+$databaseUrl = getenv('DATABASE_URL') ?: getenv('POSTGRES_URL') ?: getenv('DB_URL');
+$hasRemoteDb = getenv('DB_HOST') || $databaseUrl;
+
+if ($hasRemoteDb && getenv('DB_CONNECTION') !== 'sqlite') {
+    // If a Postgres connection or URL is provided, ensure pgsql driver is active
+    if (!getenv('DB_CONNECTION') || getenv('DB_CONNECTION') === 'pgsql') {
+        if ($databaseUrl && (str_contains($databaseUrl, 'postgres') || str_contains($databaseUrl, 'pgsql'))) {
+            putenv('DB_CONNECTION=pgsql');
+            $_ENV['DB_CONNECTION'] = 'pgsql';
+        }
+    }
+} else {
+    // Fallback to standalone seeded SQLite for zero-config serverless demo
     $tmpDb = '/tmp/database.sqlite';
     $srcDb = __DIR__ . '/../database/database.sqlite';
     if (!file_exists($tmpDb) && file_exists($srcDb)) {
