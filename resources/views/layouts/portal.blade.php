@@ -55,12 +55,12 @@
                     <span class="tracking-wide">San Jose de Buenavista, Antique</span>
                 </div>
 
-                <a href="{{ route('home') }}" class="text-xs font-semibold px-2.5 sm:px-3 py-1.5 rounded-lg sm:rounded-xl {{ request()->is('/') ? 'bg-slate-800/90 text-white border-slate-700' : 'text-slate-400 hover:text-white hover:bg-slate-900/80 border-transparent' }} border transition flex items-center gap-1 sm:gap-1.5">
+                <a href="{{ route('home') }}" class="text-xs font-semibold px-2.5 sm:px-3 py-1.5 rounded-lg sm:rounded-xl {{ request()->is('/') ? 'bg-slate-800/90 text-white border-slate-700' : 'text-slate-400 hover:text-white hover:bg-slate-900/80 border-transparent' }} border transition inline-flex items-center gap-1 sm:gap-1.5 min-h-[44px]">
                     <i data-lucide="home" class="w-3.5 h-3.5 text-rose-400"></i>
                     <span class="hidden sm:inline">Home</span>
                 </a>
 
-                <a href="{{ route('customer.track') }}" class="text-xs font-semibold px-2.5 sm:px-3.5 py-1.5 rounded-lg sm:rounded-xl {{ request()->is('track*') ? 'bg-rose-600 text-white shadow-lg shadow-rose-950/50' : 'bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700' }} transition flex items-center gap-1 sm:gap-1.5">
+                <a href="{{ route('customer.track') }}" class="text-xs font-semibold px-2.5 sm:px-3.5 py-1.5 rounded-lg sm:rounded-xl {{ request()->is('track*') ? 'bg-rose-600 text-white shadow-lg shadow-rose-950/50' : 'bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700' }} transition inline-flex items-center gap-1 sm:gap-1.5 min-h-[44px]">
                     <i data-lucide="search" class="w-3.5 h-3.5 {{ request()->is('track*') ? 'text-white' : 'text-rose-400' }}"></i>
                     <span>Track<span class="hidden sm:inline"> Status</span></span>
                 </a>
@@ -68,7 +68,7 @@
                 @if(session('customer_tracking_ref'))
                     <form action="{{ route('customer.logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-lg sm:rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white transition flex items-center gap-1 sm:gap-1.5 shadow-md">
+                        <button type="submit" class="text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-lg sm:rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white transition inline-flex items-center gap-1 sm:gap-1.5 shadow-md min-h-[44px] cursor-pointer">
                             <i data-lucide="log-out" class="w-3.5 h-3.5 text-rose-400"></i>
                             <span class="hidden sm:inline">Exit</span>
                         </button>

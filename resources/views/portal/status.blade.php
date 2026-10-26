@@ -1,71 +1,71 @@
 @extends('layouts.portal')
 
 @section('content')
-<div class="max-w-3xl mx-auto space-y-6 sm:space-y-8">
+<div class="max-w-3xl mx-auto space-y-4 sm:space-y-6 lg:space-y-8" x-data="{ showRequirementsModal: false, activeTab: 'owner' }">
 
     <!-- Top Navigation Breadcrumb -->
     <div class="flex items-center justify-between text-xs">
-        <a href="{{ route('customer.track') }}" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition font-medium text-[11px] sm:text-xs">
-            <i data-lucide="arrow-left" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+        <a href="{{ route('customer.track') }}" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition font-medium text-[11px] sm:text-xs min-h-[44px]">
+            <i data-lucide="arrow-left" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-400"></i>
             <span>Check Another Unit</span>
         </a>
 
         <div class="flex items-center gap-1.5 sm:gap-2">
-            <span class="text-slate-500 font-mono text-[10px] sm:text-[11px]">REF:</span>
-            <span class="font-mono text-[11px] sm:text-xs font-bold text-rose-400 bg-rose-950/70 border border-rose-800/60 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg">
+            <span class="text-slate-500 font-mono text-[9px] sm:text-[11px]">REF:</span>
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-rose-400 bg-rose-950/70 border border-rose-800/60 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg">
                 {{ $motorcycle->tracking_reference }}
             </span>
         </div>
     </div>
 
     <!-- GetLayers Telemetry Deck: Vehicle & Customer Identity -->
-    <div data-spotlight class="getlayers-glass rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 relative overflow-hidden group">
+    <div data-spotlight class="getlayers-glass rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 lg:p-8 relative overflow-hidden group">
         <div class="absolute -right-16 -top-16 w-48 h-48 bg-rose-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-5 pb-4 sm:pb-6 border-b border-slate-800/80 relative z-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-5 pb-3.5 sm:pb-6 border-b border-slate-800/80 relative z-10">
             <div>
                 <div class="flex items-center gap-2">
                     <span class="text-[9px] sm:text-[10px] font-black uppercase tracking-wider sm:tracking-widest text-rose-400 bg-rose-950/80 border border-rose-800/50 px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full">
                         Registered Buyer
                     </span>
-                    <span class="text-[11px] sm:text-xs text-slate-400 font-mono">{{ $motorcycle->customer?->masked_mobile }}</span>
+                    <span class="text-[10px] sm:text-xs text-slate-400 font-mono">{{ $motorcycle->customer?->masked_mobile }}</span>
                 </div>
-                <h1 class="text-xl sm:text-2xl lg:text-3xl font-black text-white mt-1 sm:mt-1.5 tracking-tight">
+                <h1 class="text-lg sm:text-2xl lg:text-3xl font-black text-white mt-1 sm:mt-1.5 tracking-tight">
                     {{ $motorcycle->customer?->first_name }} {{ substr($motorcycle->customer?->last_name ?? '', 0, 1) }}.
                 </h1>
-                <p class="text-[11px] sm:text-xs text-slate-400 mt-0.5">
+                <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">
                     Assigned Dealership: <span class="text-slate-200 font-bold">{{ $motorcycle->branch->name }}</span>
                 </p>
             </div>
 
             <!-- Vehicle Model Hero Badge -->
-            <div class="text-left sm:text-right bg-slate-950/60 border border-slate-800 p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl sm:min-w-44">
-                <span class="block text-[9px] sm:text-[10px] font-extrabold uppercase tracking-widest text-slate-500">Motorcycle Unit</span>
-                <span class="text-sm sm:text-base font-black text-white block">{{ $motorcycle->model }}</span>
-                <span class="text-[11px] sm:text-xs text-rose-400 font-medium">{{ $motorcycle->color }} &bull; {{ $motorcycle->year_model }}</span>
+            <div class="text-left sm:text-right bg-slate-950/60 border border-slate-800 p-2 sm:p-3.5 rounded-xl sm:rounded-2xl sm:min-w-44">
+                <span class="block text-[8px] sm:text-[10px] font-extrabold uppercase tracking-widest text-slate-500">Motorcycle Unit</span>
+                <span class="text-xs sm:text-base font-black text-white block">{{ $motorcycle->model }}</span>
+                <span class="text-[10px] sm:text-xs text-rose-400 font-medium">{{ $motorcycle->color }} &bull; {{ $motorcycle->year_model }}</span>
             </div>
         </div>
 
         <!-- Masked Identifiers Grid (RA 10173 Compliant) -->
-        <div class="mt-4 sm:mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 text-xs relative z-10">
-            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-950/60 border border-slate-800/80">
-                <span class="text-slate-500 block text-[9px] sm:text-[10px] uppercase font-bold tracking-wider">Manufacturer</span>
-                <strong class="text-white text-xs sm:text-sm font-bold block mt-0.5 truncate">{{ $motorcycle->manufacturer }}</strong>
+        <div class="mt-3 sm:mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 text-xs relative z-10">
+            <div class="p-2 sm:p-3 rounded-lg sm:rounded-2xl bg-slate-950/60 border border-slate-800/80">
+                <span class="text-slate-500 block text-[8px] sm:text-[10px] uppercase font-bold tracking-wider">Manufacturer</span>
+                <strong class="text-white text-[11px] sm:text-sm font-bold block mt-0.5 truncate">{{ $motorcycle->manufacturer }}</strong>
             </div>
 
-            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-950/60 border border-slate-800/80">
-                <span class="text-slate-500 block text-[9px] sm:text-[10px] uppercase font-bold tracking-wider">Purchase Date</span>
-                <strong class="text-white text-xs sm:text-sm font-bold block mt-0.5 truncate">{{ $motorcycle->purchase_date->format('M d, Y') }}</strong>
+            <div class="p-2 sm:p-3 rounded-lg sm:rounded-2xl bg-slate-950/60 border border-slate-800/80">
+                <span class="text-slate-500 block text-[8px] sm:text-[10px] uppercase font-bold tracking-wider">Purchase Date</span>
+                <strong class="text-white text-[11px] sm:text-sm font-bold block mt-0.5 truncate">{{ $motorcycle->purchase_date->format('M d, Y') }}</strong>
             </div>
 
-            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-950/60 border border-slate-800/80">
-                <span class="text-slate-500 block text-[9px] sm:text-[10px] uppercase font-bold tracking-wider">Engine No</span>
-                <span class="font-mono text-slate-200 text-[11px] sm:text-xs font-bold block mt-0.5 truncate">{{ $motorcycle->masked_engine_number }}</span>
+            <div class="p-2 sm:p-3 rounded-lg sm:rounded-2xl bg-slate-950/60 border border-slate-800/80">
+                <span class="text-slate-500 block text-[8px] sm:text-[10px] uppercase font-bold tracking-wider">Engine No</span>
+                <span class="font-mono text-slate-200 text-[10px] sm:text-xs font-bold block mt-0.5 truncate">{{ $motorcycle->masked_engine_number }}</span>
             </div>
 
-            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-950/60 border border-slate-800/80">
-                <span class="text-slate-500 block text-[9px] sm:text-[10px] uppercase font-bold tracking-wider">Chassis No</span>
-                <span class="font-mono text-slate-200 text-[11px] sm:text-xs font-bold block mt-0.5 truncate">{{ $motorcycle->masked_chassis_number }}</span>
+            <div class="p-2 sm:p-3 rounded-lg sm:rounded-2xl bg-slate-950/60 border border-slate-800/80">
+                <span class="text-slate-500 block text-[8px] sm:text-[10px] uppercase font-bold tracking-wider">Chassis No</span>
+                <span class="font-mono text-slate-200 text-[10px] sm:text-xs font-bold block mt-0.5 truncate">{{ $motorcycle->masked_chassis_number }}</span>
             </div>
         </div>
     </div>
@@ -273,46 +273,218 @@
     </div>
 
     <!-- Collection Concierge & Requirements Deck -->
-    <div class="getlayers-glass rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-5">
+    <div class="getlayers-glass rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 lg:p-8 space-y-3.5 sm:space-y-5">
         <div class="flex items-center justify-between pb-3 sm:pb-4 border-b border-slate-800/80">
             <h3 class="text-xs sm:text-sm font-extrabold text-white flex items-center gap-2">
                 <i data-lucide="map-pin" class="w-4 h-4 text-rose-500"></i>
                 <span>Dealership Location &amp; Pickup</span>
             </h3>
-            <span class="text-[10px] sm:text-xs text-rose-400 font-bold">SAN JOSE BRANCH</span>
+            <span class="text-[9px] sm:text-xs text-rose-400 font-bold uppercase tracking-wider">SAN JOSE BRANCH</span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <!-- Branch Location Info -->
             <div class="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-950/70 border border-slate-800/80 space-y-2 text-xs">
                 <strong class="text-white font-bold text-xs sm:text-sm block">{{ $motorcycle->branch->name }}</strong>
-                <p class="text-slate-400 text-[11px] sm:text-xs leading-relaxed">{{ $motorcycle->branch->full_address }}</p>
-                <div class="pt-2 border-t border-slate-800/60 space-y-1 text-slate-400 text-[11px]">
+                <p class="text-slate-400 text-[10px] sm:text-xs leading-relaxed">{{ $motorcycle->branch->full_address }}</p>
+                <div class="pt-2 border-t border-slate-800/60 space-y-1 text-slate-400 text-[10px] sm:text-[11px]">
                     <div>Hours: <strong class="text-slate-200">{{ $motorcycle->branch->operating_hours }}</strong></div>
                     <div>Hotline: <strong class="text-rose-400 font-mono">{{ $motorcycle->branch->contact_number }}</strong></div>
                 </div>
             </div>
 
-            <!-- Mandatory Requirements -->
-            <div class="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-950/70 border border-slate-800/80 text-xs space-y-2">
-                <strong class="text-rose-400 font-bold uppercase tracking-wider text-[10px] sm:text-[11px] block">
-                    Checklist to Bring:
-                </strong>
-                <ul class="space-y-1.5 text-slate-300 text-[11px]">
-                    <li class="flex items-start gap-1.5 sm:gap-2">
-                        <i data-lucide="check" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i>
-                        <span>Tracking reference slip (<strong>{{ $motorcycle->tracking_reference }}</strong>).</span>
-                    </li>
-                    <li class="flex items-start gap-1.5 sm:gap-2">
-                        <i data-lucide="check" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i>
-                        <span>Two (2) original valid government-issued IDs of the registered owner.</span>
-                    </li>
-                    <li class="flex items-start gap-1.5 sm:gap-2">
-                        <i data-lucide="check" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i>
-                        <span>If representative: Signed SPA / Authorization Letter &amp; ID photocopy.</span>
-                    </li>
-                </ul>
+            <!-- Mandatory Requirements Summary with Interactive Modal Trigger -->
+            <div class="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-950/70 border border-slate-800/80 text-xs space-y-2.5 flex flex-col justify-between">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <strong class="text-rose-400 font-bold uppercase tracking-wider text-[10px] sm:text-[11px] block">
+                            Quick Checklist:
+                        </strong>
+                        <span class="text-[9px] text-slate-500 font-mono">2 VALID IDS</span>
+                    </div>
+                    <ul class="space-y-1.5 text-slate-300 text-[10px] sm:text-[11px]">
+                        <li class="flex items-start gap-1.5 sm:gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i>
+                            <span>Tracking reference code (<strong>{{ $motorcycle->tracking_reference }}</strong>).</span>
+                        </li>
+                        <li class="flex items-start gap-1.5 sm:gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i>
+                            <span>Two (2) original valid government-issued IDs.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5 sm:gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i>
+                            <span>Representative: Signed SPA &amp; owner ID photocopy.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Open Detailed Requirements Modal Button -->
+                <button type="button" @click="showRequirementsModal = true"
+                        class="w-full mt-2 py-2.5 px-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white border border-slate-700 hover:border-rose-500/50 text-[11px] sm:text-xs font-bold transition flex items-center justify-center gap-2 cursor-pointer shadow-md min-h-[44px]">
+                    <i data-lucide="clipboard-check" class="w-4 h-4 text-rose-400"></i>
+                    <span>View Full Claim &amp; Representative Checklist</span>
+                </button>
             </div>
+        </div>
+    </div>
+
+    <!-- Interactive Claim Requirements Modal (Radix / shadcn Accessible Dialog) -->
+    <div x-show="showRequirementsModal" x-cloak
+         @keydown.escape.window="showRequirementsModal = false"
+         class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+         role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+        <!-- Accessible Backdrop Blur -->
+        <div x-show="showRequirementsModal"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             @click="showRequirementsModal = false"
+             class="fixed inset-0 bg-slate-950/80 backdrop-blur-md"></div>
+
+        <!-- Modal Card Content -->
+        <div x-show="showRequirementsModal"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 scale-95 translate-y-2"
+             x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+             x-transition:leave-end="opacity-0 scale-95 translate-y-2"
+             class="relative w-full max-w-xl bg-slate-900 border border-slate-700 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden z-10 my-auto text-left">
+
+            <!-- Top Modal Bar -->
+            <div class="px-4 sm:px-6 py-3.5 sm:py-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center gap-2 sm:gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-rose-950/80 border border-rose-800/60 text-rose-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                        <h3 id="modal-title" class="text-xs sm:text-sm font-black text-white uppercase tracking-wider">
+                            Document Claim &amp; Release Guidelines
+                        </h3>
+                        <p class="text-[9px] sm:text-[10px] text-slate-400 font-mono">YAMAHA DEALERSHIP VAULT PROTOCOL</p>
+                    </div>
+                </div>
+
+                <button @click="showRequirementsModal = false" aria-label="Close dialog"
+                        class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center">
+                    <i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                </button>
+            </div>
+
+            <!-- Tab Navigation (Owner vs Representative) -->
+            <div class="px-4 sm:px-6 pt-3 sm:pt-4 border-b border-slate-800 flex gap-2">
+                <button type="button" @click="activeTab = 'owner'"
+                        :class="activeTab === 'owner' ? 'border-rose-500 text-rose-400 bg-rose-950/30' : 'border-transparent text-slate-400 hover:text-slate-200'"
+                        class="px-3.5 py-2 text-xs font-bold border-b-2 transition flex items-center gap-1.5 cursor-pointer rounded-t-lg">
+                    <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+                    <span>Registered Owner</span>
+                </button>
+
+                <button type="button" @click="activeTab = 'representative'"
+                        :class="activeTab === 'representative' ? 'border-rose-500 text-rose-400 bg-rose-950/30' : 'border-transparent text-slate-400 hover:text-slate-200'"
+                        class="px-3.5 py-2 text-xs font-bold border-b-2 transition flex items-center gap-1.5 cursor-pointer rounded-t-lg">
+                    <i data-lucide="users" class="w-3.5 h-3.5"></i>
+                    <span>Authorized Representative</span>
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="p-4 sm:p-6 space-y-4 max-h-[70vh] overflow-y-auto text-xs text-slate-300">
+
+                <!-- Tab 1: Registered Owner -->
+                <div x-show="activeTab === 'owner'" class="space-y-4">
+                    <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+                        <strong class="text-white text-xs font-bold flex items-center gap-1.5">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                            Owner Requirements Checklist
+                        </strong>
+                        <ul class="space-y-2 text-[11px] sm:text-xs text-slate-300 pl-1">
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 shrink-0"></span>
+                                <span><strong>Tracking Reference Slip:</strong> Original copy or clear screenshot containing tracking reference <span class="font-mono text-rose-300">{{ $motorcycle->tracking_reference }}</span>.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 shrink-0"></span>
+                                <span><strong>Two (2) Valid Government IDs:</strong> Original IDs showing registered name (<span class="font-bold text-white">{{ $motorcycle->customer?->first_name }} {{ $motorcycle->customer?->last_name }}</span>), clear photo, and signature.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 shrink-0"></span>
+                                <span><strong>Verification PIN:</strong> Last 4 digits of your phone (<span class="font-mono text-emerald-400 font-bold">****</span>).</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 space-y-1.5">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Accepted Primary Government IDs:</span>
+                        <div class="grid grid-cols-2 gap-2 text-[10px] text-slate-400">
+                            <div>&bull; Philippine National ID (PhilID)</div>
+                            <div>&bull; LTO Driver's License</div>
+                            <div>&bull; Philippine Passport</div>
+                            <div>&bull; UMID / SSS ID</div>
+                            <div>&bull; Postal ID (Digital)</div>
+                            <div>&bull; PRC Professional ID</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Authorized Representative -->
+                <div x-show="activeTab === 'representative'" class="space-y-4">
+                    <div class="p-3 rounded-xl bg-amber-950/40 border border-amber-800/60 text-amber-200 text-xs space-y-1.5">
+                        <strong class="font-bold flex items-center gap-1.5 text-amber-300">
+                            <i data-lucide="alert-circle" class="w-4 h-4 text-amber-400"></i>
+                            Strict LTO Vault Compliance
+                        </strong>
+                        <p class="text-[10px] sm:text-[11px] leading-relaxed text-amber-200/90">
+                            Due to Republic Act 10173 and anti-theft vehicle regulations, third-party representatives must present complete authenticated documentation.
+                        </p>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+                        <strong class="text-white text-xs font-bold flex items-center gap-1.5">
+                            <i data-lucide="file-check" class="w-4 h-4 text-rose-400"></i>
+                            Mandatory Representative Documents:
+                        </strong>
+                        <ul class="space-y-2 text-[11px] sm:text-xs text-slate-300 pl-1">
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 shrink-0"></span>
+                                <span><strong>Special Power of Attorney (SPA) / Authorization Letter:</strong> Duly signed by registered buyer <span class="text-white font-bold">{{ $motorcycle->customer?->full_name }}</span> explicitly naming the representative.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 shrink-0"></span>
+                                <span><strong>Two (2) Valid IDs of the Representative:</strong> Original government-issued IDs with photo and signature.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 shrink-0"></span>
+                                <span><strong>Photocopy of Owner's Valid ID:</strong> Must bear three (3) original specimen signatures of the registered buyer.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 shrink-0"></span>
+                                <span><strong>Official MotoRelease Tracking Slip:</strong> Printed tracking code or claim voucher.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Dealership Releasing Desk Hours Note -->
+                <div class="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 text-[10px] sm:text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>Releasing Desk: <strong>{{ $motorcycle->branch->name }}</strong></span>
+                    <span class="text-rose-400 font-mono font-bold">{{ $motorcycle->branch->contact_number }}</span>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-4 sm:px-6 py-3 bg-slate-950 border-t border-slate-800 flex justify-end">
+                <button type="button" @click="showRequirementsModal = false"
+                        class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition cursor-pointer min-h-[44px]">
+                    I Understand
+                </button>
+            </div>
+
         </div>
     </div>
 

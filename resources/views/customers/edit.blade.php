@@ -121,11 +121,11 @@
                 </div>
             </div>
 
-            <div class="flex items-center justify-between pt-4 border-t border-slate-100">
-                <a href="{{ route('customers.show', $customer) }}" class="text-xs text-slate-500 hover:text-slate-800 font-semibold">
+            <div class="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3 pt-4 border-t border-slate-100">
+                <a href="{{ route('customers.show', $customer) }}" class="text-xs text-slate-500 hover:text-slate-800 font-semibold min-h-[44px] flex items-center">
                     &larr; Cancel and go back
                 </a>
-                <button type="submit" class="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-sm transition">
+                <button type="submit" class="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-sm transition min-h-[44px] cursor-pointer flex items-center justify-center">
                     Save Changes
                 </button>
             </div>

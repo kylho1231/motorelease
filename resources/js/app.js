@@ -27,6 +27,9 @@ function init3DTilt() {
     const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     if (isTouchDevice) return;
 
+    // Respect user's reduced-motion preference
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     document.querySelectorAll('[data-tilt]').forEach(card => {
         card.style.transformStyle = 'preserve-3d';
         card.style.transition = 'transform 0.15s ease-out';

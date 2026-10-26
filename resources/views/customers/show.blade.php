@@ -28,10 +28,10 @@
         </div>
 
         <div class="flex items-center gap-2 w-full md:w-auto">
-            <a href="{{ route('customers.edit', $customer) }}" class="flex-1 md:flex-none justify-center px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-50 transition flex items-center gap-1.5">
+            <a href="{{ route('customers.edit', $customer) }}" class="flex-1 md:flex-none justify-center px-3.5 py-2 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-50 transition flex items-center gap-1.5 min-h-[44px]">
                 <i data-lucide="edit-3" class="w-3.5 h-3.5"></i> <span>Edit Profile</span>
             </a>
-            <a href="{{ route('motorcycles.create', ['customer_id' => $customer->id]) }}" class="flex-1 md:flex-none justify-center px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-sm transition flex items-center gap-1.5">
+            <a href="{{ route('motorcycles.create', ['customer_id' => $customer->id]) }}" class="flex-1 md:flex-none justify-center px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-sm transition flex items-center gap-1.5 min-h-[44px]">
                 <i data-lucide="plus" class="w-3.5 h-3.5"></i> <span>Add Unit</span>
             </a>
         </div>
@@ -90,7 +90,7 @@
                                 </div>
                             </div>
 
-                            <a href="{{ route('motorcycles.show', $bike) }}" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition">
+                            <a href="{{ route('motorcycles.show', $bike) }}" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition min-h-[44px] flex items-center justify-center">
                                 Manage Unit
                             </a>
                         </div>

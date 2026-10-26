@@ -190,12 +190,68 @@ table td.text-right button {
         -webkit-text-size-adjust: 100%;
     }
 
-    /* Prevent iOS Safari from auto-zooming input fields */
+    /* Prevent iOS Safari from auto-zooming input fields while keeping text readable */
     input[type="text"],
     input[type="password"],
     input[type="number"],
     input[type="search"],
     select {
         font-size: 16px;
+    }
+}
+
+/* Accessible Focus Rings */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid #E11D48 !important;
+    outline-offset: 2px !important;
+}
+
+/* High-Tech Shimmer Skeleton Keyframes */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.shimmer-skeleton {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 25%, rgba(225, 29, 72, 0.12) 50%, rgba(255, 255, 255, 0.04) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+}
+
+.shimmer-skeleton-light {
+    background: linear-gradient(90deg, rgba(226, 232, 240, 0.6) 25%, rgba(244, 63, 94, 0.15) 50%, rgba(226, 232, 240, 0.6) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+}
+
+/* Accessibility: Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .animate-float-slow,
+    .animate-float-reverse,
+    .animate-pulse-glow,
+    .getlayers-radar,
+    .shimmer-skeleton,
+    .shimmer-skeleton-light {
+        animation: none !important;
+    }
+
+    [data-tilt] {
+        transform: none !important;
     }
 }
